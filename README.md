@@ -1,3 +1,13 @@
+# Avance 1 - IMPORTANTE LEER
+En este avance, cree 4 clases (dos de ellas son subclases de una), con sus respectivos métodos y atributos.
+Así mismo, se crearon varios objetos en el "main" y se hace uso de estos a lo largo del programa.
+En este avance también incluí herencias y polimorfismo.
+
+-¿Qué se va a implementar para el próximo avance?
+
+Como se puede ver, hay código que se repite bastante. Por ello, para el próximo avance, haré diversas funciones para   solucionar esto y una reestructura del código para tenerlo más ordenado y facilitar su lectura.
+
+
 # Proyecto para la materia: pensamiento computacional orientado a objetos
 Este trabajo es parte del proyecto para la materia "Pensamiento computacional orientado a objetos".
 
@@ -16,7 +26,7 @@ Para ello, se utilizarán varias clases para los usuarios y productos, junto sus
 
 - Iniciar desde el panel de administrador (tiene libertad de eliminar, agregar y ver a los usuarios y productos)
 
-- Ingresar o registrarse como usuario
+- Ingresar o registrarse como usuario (Permite checar perfil, ver a los demás usuarios, ver los productos disponibles y hacer compras)
 
 - Indicar saldo en la cuenta para facilitar compras
 
