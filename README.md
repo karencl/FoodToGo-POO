@@ -7,6 +7,7 @@ En este avance también incluí herencias y polimorfismo.
 
 Como se puede ver, hay código que se repite bastante. Por ello, para el próximo avance, haré diversas funciones para   solucionar esto y una reestructura del código para tenerlo más ordenado y facilitar su lectura.
 
+*LA CONTRASEÑA DEL ADMIN1 ES: 1234
 
 # Proyecto para la materia: pensamiento computacional orientado a objetos
 Este trabajo es parte del proyecto para la materia "Pensamiento computacional orientado a objetos".
