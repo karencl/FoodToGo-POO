@@ -1,11 +1,10 @@
-# Avance 1 - IMPORTANTE LEER
-En este avance, cree 4 clases (dos de ellas son subclases de una), con sus respectivos métodos y atributos.
-Así mismo, se crearon varios objetos en el "main" y se hace uso de estos a lo largo del programa.
-En este avance también incluí herencias y polimorfismo.
+# Avance 2 - IMPORTANTE LEER
+En este avance, reestructuré el código basándome en mi diagrama de clases.
+Así mismo, acomodé mis archivos, agregué funciones y comentarios en el código.
 
 -¿Qué se va a implementar para el próximo avance?
 
-Como se puede ver, hay código que se repite bastante. Por ello, para el próximo avance, haré diversas funciones para   solucionar esto y una reestructura del código para tenerlo más ordenado y facilitar su lectura.
+Trataé de agregar funciones nuevas y hacer las correcciones que se me indiquen de este avance.
 
 *LA CONTRASEÑA DEL ADMIN1 ES: 1234
 
