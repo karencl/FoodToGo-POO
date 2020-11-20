@@ -1,93 +1,99 @@
-//
-//  main.cpp
-//  FoodToGo-POO
-//
-//  Created by Karen CL on 10/11/20.
-//  Copyright © 2020 KarenCbrs. All rights reserved.
-//
+/*
+ * Proyecto FoodToGo - POO
+ * Karen Cebreros López
+ * A01704254
+ * 10/11/2020
+ *
+ * main.cpp
+ * FoodToGo-POO
+ * Created by Karen CL on 10/11/20.
+ * Copyright © 2020 KarenCbrs. All rights reserved.
+ */
 
-#include <iostream>
+/*
+ * Descripción:
+ * Este es un proyecto para la clase de pensamiento computacional
+ * orientado a objetos.
+ * Es un programa que simula el funcionamiento de una aplicación para
+ * hacer pedidos en línea.
+ */
 
-#include "ClasePersona.hpp"
-#include "ClaseUsuario.hpp"
-#include "ClaseAdministrador.hpp"
-#include "ClaseProducto.hpp"
+//Bibliotecas
+#include <iostream> //Para imprimir
+
+//Clases del proyecto
+#include "Producto.hpp"
+#include "Persona.hpp"
+#include "Tienda.hpp"
 
 using namespace std;
 
-int main(int argc, const char * argv[]) {
-    //Objeto de la clase: "Administrador" -> creado con el fin de pruebas del programa
-    Administrador admin1;
-    admin1.setDatos("Karen", "Admin", "karen@prueba.com", 1234567890, 1234);
+//Prototipos de funciones (hasta abajo están las declaraciones)
+void menuAdmin();
+void menuUsuario();
+
+int main() {
     
-    //Creando objetos de la clase Usuario
+    //Objeto de la clase Administrador -> creado con el fin de pruebas del programa
+    Administrador admin1;
+    admin1.set_datos("Karen", "Admin", "karen@prueba.com", 1234567890, 1234);
+    
+    //Objeto de la clase tienda
+    Tienda tienda;
+    tienda.crea_productos_comida();
+    tienda.crea_productos_bebidas();
+    
+    //Creando un arreglo de objetos de la clase Usuario
     int u = 2;
     int id = 3;
-    Usuario * lista_usuarios[u];
-    lista_usuarios[0] = new Usuario;
-    lista_usuarios[0]->setDatos("Daniela", "Regular", "dany@gmail.com", 1231231231, 1, 130);
-    lista_usuarios[1] = new Usuario;
-    lista_usuarios[1]->setDatos("Pepe", "Regular", "pepe@gmail.com", 4564564564, 2, 85);
-    
-    //Creando objetos de la clase Producto
-    int p = 4;
-    Producto * lista_productos[p];
-    lista_productos[0] = new Producto;
-    lista_productos[0]->setDatosProducto(314, "Ensalada", 70);
-    lista_productos[1] = new Producto;
-    lista_productos[1]->setDatosProducto(421, "Hamburguesa", 120);
-    lista_productos[2] = new Producto;
-    lista_productos[2]->setDatosProducto(122, "Naranjada", 30);
-    lista_productos[3] = new Producto;
-    lista_productos[3]->setDatosProducto(117, "Arrachera", 180);
+    Usuario lista_usuarios[100];
+    lista_usuarios[0].set_datos("Daniela", "Regular", "dany@gmail.com", 1231231231, 1, 130);
+    lista_usuarios[1].set_datos("Pepe", "Regular", "pepe@gmail.com", 4564564564, 2, 85);
  
-//  Bienvenida al programa
+    //Bienvenida al programa
     cout<<"Bienvenid@ a ~Food to go!~"<<endl;
     
     int opcion_ingreso;
     
-//  Opción de ingreso (usuario/ administrador)
     cout<<"¿Cómo desea ingresar?"<<endl<<endl;
     cout<<"1) Administrador"<<endl;
     cout<<"2) Usuario"<<endl<<endl;
+    
+    //Lee la opción de ingreso (usuario/ administrador)
     cin>>opcion_ingreso;
     
+    //Switch dependiendo de la elección de ingreso (usuario/ administrador)
     switch (opcion_ingreso) {
+            
+        //Caso 1 -> entra como administrador
         case 1:
             int codigo_acceso;
             cout<<"Ingrese código: ";
+            
+            //Lee el código de acceso del admin
             cin>>codigo_acceso;
             cout<<"\n";
             
-            if (codigo_acceso == admin1.getContrasena()) {
+            //Verifica el código de acceso
+            if (codigo_acceso == admin1.get_contrasena()) {
                 
                 int opcion_admin = 0;
                 
-//              Menú del panel administrador
+                //Ciclo para que siga corriendo, mientras no elija la opción "salir"
                 while (opcion_admin != 7) {
-                    cout<<"·············MENÚ·············"<<endl;
-                    cout<<"¿Qué desea hacer?"<<endl;
-                    cout<<"1) Ver usuarios"<<endl;
-                    cout<<"2) Agregar usuario"<<endl;
-                    cout<<"3) Eliminar usuario"<<endl;
-                    cout<<"4) Ver productos disponibles"<<endl;
-                    cout<<"5) Agregar producto"<<endl;
-                    cout<<"6) Eliminar producto"<<endl;
-                    cout<<"7) Salir"<<endl;
-                    cout<<"\n";
                     
+                    //Impresión del menú para el administrador
+                    menuAdmin();
+                    
+                    //Lee la opción del menú seleccionada por el administrador
                     cin>>opcion_admin;
                     
-//                  Opción 1 del panel: "Administrador" (ver usuarios)
+                    //Opción 1 del panel: "Administrador" (ver usuarios)
                     if (opcion_admin == 1) {
-                        cout<<"   Nombre    "<<"Nivel     "<<"Correo     "<< "Teléfono     "<<"Id     "<<"Saldo     "<<endl;
-                        for (int k = 0; k < u; k++) {
-                            cout<<k<<"  ";
-                            lista_usuarios[k]->mostrar();
-                        } 
+                        lista_usuarios[u].mostrar_lista_usuarios(lista_usuarios, u);
                     }
                     
-//                  Opción 2 del panel: "Administrador" (agregar usuario)
+                    //Opción 2 del panel: "Administrador" (agregar usuario)
                     else if (opcion_admin == 2) {
                         string nombre, nivel, correo;
                         int saldo;
@@ -104,94 +110,112 @@ int main(int argc, const char * argv[]) {
                         cin>>saldo;
                         cout<<"\n";
                         
-                        lista_usuarios[u] = new Usuario;
-                        lista_usuarios[u]->setDatos(nombre, nivel, correo, telefono, id, saldo);
-                        u += 1;
-                        id += 1;
+                        lista_usuarios[u].set_datos(nombre, nivel, correo, telefono, id, saldo);
+                        u ++;
+                        id ++;
                     }
                     
-//                  Opción 3 del panel: "Administrador" (eliminar usuario)
+                    //Opción 3 del panel: "Administrador" (eliminar usuario)
                     else if (opcion_admin == 3) {
-                        cout<<"   Nombre    "<<"Nivel     "<<"Correo     "<< "Teléfono     "<<"Id     "<<"Saldo     "<<endl;
-                        for (int k = 0; k < u; k++) {
-                            cout<<k<<"  ";
-                            lista_usuarios[k]->mostrar();
-                        }
+                        lista_usuarios[u].mostrar_lista_usuarios(lista_usuarios, u);
+                        
                         cout<<"\n";
-                        cout<<"¿Cuál usuario quiere eliminar?: ";
+                        cout<<"¿Cuál usuario quieres eliminar?: ";
                         int usuario_a_eliminar;
                         cin>>usuario_a_eliminar;
                         for (int j = usuario_a_eliminar; j <= u; j++) {
                             lista_usuarios[j] = lista_usuarios[j + 1];
                         }
-                        u -= 1;
+                        u --;
                         cout<<"Listo! Usuario eliminado exitosamente."<<endl;
                     }
                     
-//                  Opción 4 del panel: "Administrador" (ver los productos disponibles)
+                    //Opción 4 del panel: "Administrador" (ver los productos disponibles)
                     else if (opcion_admin == 4) {
                         cout<<"* * * * * LA CARTA * * * * *"<<endl;
-                        cout<<"   Id      "<<"Nombre       "<<"Costo    "<<endl;
-                        for (int j = 0; j < p; j++) {
-                            cout<<j<<"  ";
-                            lista_productos[j]->mostrarProducto();
-                        }
-                        cout<<"\n";
+                        tienda.muestra_lista_comida();
+                        tienda.muestra_lista_bebidas();
                     }
                     
-//                  Opción 5 del panel: "Administrador" (agregar producto)
+                    //Opción 5 del panel: "Administrador" (agregar producto)
                     else if (opcion_admin == 5) {
                         string nombre;
                         int id, costo;
-                        cout<<"Id: "; cin>>id;
-                        cout<<"Nombre: "; cin>>nombre;
-                        cout<<"Costo (sin $): "; cin>>costo;
+                        cout<<"Id: ";
+                        cin>>id;
+                        cout<<"Nombre: ";
+                        cin>>nombre;
+                        cout<<"Costo (sin $): ";
+                        cin>>costo;
                         cout<<"\n";
                         
-                        lista_productos[p] = new Producto;
-                        lista_productos[p]->setDatosProducto(id, nombre, costo);
-                        p += 1;
+                        int eleccion;
+                        cout<<"¿Qué quieres agregar? COMIDA (1)/ BEBIDA (2): "<<endl;
+                        cin>>eleccion;
+                        
+                        string sabor, tipo;
+                        switch (eleccion) {
+                            case 1:
+                                cout<<"Tipo: ";
+                                cin>>tipo;
+                                cout<<"\n";
+                                tienda.agrega_producto_comida(id, nombre, costo, tipo);
+                                break;
+                            case 2:
+                                cout<<"Sabor: ";
+                                cin>>sabor;
+                                cout<<"\n";
+                                tienda.agrega_producto_bebida(id, nombre, costo, sabor);
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     
-//                  Opción 6 del panel: "Administrador" (eliminar producto)
+                    //Opción 6 del panel: "Administrador" (eliminar producto)
                     else if (opcion_admin == 6) {
                         cout<<"* * * * * LA CARTA * * * * *"<<endl;
-                        cout<<"   Id     "<<"Nombre      "<<"Costo    "<<endl;
-                        for (int j = 0; j < p; j++) {
-                            cout<<j<<"  ";
-                            lista_productos[j]->mostrarProducto();
-                        }
-                        cout<<"\n";
-                        cout<<"\n";
-                        cout<<"¿Cuál producto quiere eliminar?: ";
+                        tienda.muestra_lista_comida();
+                        tienda.muestra_lista_bebidas();
+                        
+                        int eleccion;
+                        cout<<"¿Qué quieres eliminar? COMIDA (1)/ BEBIDA (2): "<<endl;
+                        cin>>eleccion;
+                        
+                        cout<<"\n¿Cuál quieres eliminar?: ";
                         int producto_a_eliminar;
                         cin>>producto_a_eliminar;
-                        for (int k=producto_a_eliminar; k < p; k++) {
-                            lista_productos[k] = lista_productos[k + 1];
+                        switch (eleccion) {
+                            case 1:
+                                tienda.elimina_producto_comida(producto_a_eliminar);
+                                break;
+                            case 2:
+                                tienda.elimina_producto_bebida(producto_a_eliminar);
+                            default:
+                                break;
                         }
-                        p -= 1;
                         cout<<"Listo! Producto eliminado exitosamente."<<endl;
                     }
                     
-//                  Opción 7 del panel: "Administrador" (salir)
+                    //Opción 7 del panel: "Administrador" (salir)
                     else if (opcion_admin == 7) {
                         cout<<"Has decidido salir.\nHasta pronto!"<<endl;
                     }
                     
-//                  Opción erronea del panel: "Administrador" (error)
+                    //Opción erronea del panel: "Administrador" (error)
                     else {
                         cout<<"ERROR --- Opción no válida!"<<endl;
                     }
                 }
             }
             
-//          Error al ingresar el código de administrador
+            //Error al ingresar el código de administrador
             else {
                 cout<<"El código es incorrecto!"<<endl;
             }
             break;
             
-//      OPCIÓN: ingresar como usuario
+        //Caso 2 -> entra como usuario
         case 2:
             int o = 1;
             string orden[] = {};
@@ -213,90 +237,81 @@ int main(int argc, const char * argv[]) {
             cout<<"\n";
             
             //Crear nuevo objeto de la clase usuario y utilizar el setter para poner los datos
-            lista_usuarios[u] = new Usuario;
-            lista_usuarios[u]->setDatos(nombre, "Regular", correo, telefono, id, saldo);
+            lista_usuarios[u].set_datos(nombre, "Regular", correo, telefono, id, saldo);
             
-            cout<<"Este es tu nuevo perfil! Esperamos que disfrutes de la aplicación!"<<endl;
-            cout<<"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"<<endl;
-            cout<<"Id de cliente: "<<lista_usuarios[u]->getId()<<endl;
-            cout<<"Nombre: "<<nombre<<endl;
-            cout<<"Nivel: "<<lista_usuarios[u]->getNivel()<<endl;
-            cout<<"Correo: "<<correo<<endl;
-            cout<<"Teléfono: "<<telefono<<endl;
-            cout<<"Saldo: "<<saldo<<endl;
-            cout<<"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
+            cout<<"Este es tu nuevo perfil! Esperamos que disfrutes de la aplicación!"<<endl<<endl;
+            
+            lista_usuarios[u].mostrar_perfil_usuario(nombre, correo, telefono, saldo, lista_usuarios, u);
              
             cout<<"Pasando al menú principal..."<<endl<<endl;
             
-            id += 1;
-            u += 1;
+            id ++;
+            u ++;
             
             int opcion_usuario = 0;
             
-//          Menú del panel usuario
+            //Ciclo para que siga corriendo, mientras no elija la opción "salir"
             while (opcion_usuario != 5) {
-                cout<<"·············MENÚ·············"<<endl;
-                cout<<"¿Qué desea hacer?"<<endl;
-                cout<<"1) Ver mi perfil"<<endl;
-                cout<<"2) Ver productos disponibles"<<endl;
-                cout<<"3) Hacer un pedido"<<endl;
-                cout<<"4) Ver los demás usuarios"<<endl;
-                cout<<"5) Salir"<<endl;
-                cout<<"\n";
                 
+                //Impresión del menú para el usuario
+                menuUsuario();
+                
+                //Lee la opción del menú seleccionada por el usuario
                 cin>>opcion_usuario;
                 
-//              Opción 1 del panel: "Usuario" (ver mi perfil)
+                //Opción 1 del panel: "Usuario" (ver mi perfil)
                 if (opcion_usuario == 1) {
-                    cout<<"- - - - - - - - - - - - - - PERFIL - - - - - - - - - - - - - -"<<endl;
-                    cout<<"Id de cliente: "<<lista_usuarios[u-1]->getId()<<endl;
-                    cout<<"Nombre: "<<nombre<<endl;
-                    cout<<"Nivel: "<<lista_usuarios[u-1]->getNivel()<<endl;
-                    cout<<"Correo: "<<correo<<endl;
-                    cout<<"Teléfono: "<<telefono<<endl;
-                    cout<<"Saldo: "<<saldo<<endl;
-                    cout<<"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
+                    lista_usuarios[u].mostrar_perfil_usuario(nombre, correo, telefono, saldo, lista_usuarios, u-1);
                 }
                 
-//              Opción 2 del panel: "Usuario" (ver los productos disponibles)
+                //Opción 2 del panel: "Usuario" (ver los productos disponibles)
                 else if (opcion_usuario == 2) {
                     cout<<"* * * * * LA CARTA * * * * *"<<endl;
-                    cout<<"   Id      "<<"Nombre       "<<"Costo    "<<endl;
-                    for (int j = 0; j < p; j++) {
-                        cout<<j<<"  ";
-                        lista_productos[j]->mostrarProducto();
-                    }
-                    cout<<"\n";
+                    tienda.muestra_lista_comida();
+                    tienda.muestra_lista_bebidas();
                 }
                 
-//              Opción 3 del panel: "Usuario" (hacer pedido)
+                //Opción 3 del panel: "Usuario" (hacer pedido)
                 else if (opcion_usuario == 3) {
                     int a_pagar = 0;
                     string algo_mas;
                     
+                    //Muestra la carta
+                    cout<<"* * * * * LA CARTA * * * * *"<<endl;
+                    tienda.muestra_lista_comida();
+                    tienda.muestra_lista_bebidas();
+                    
+                    //Toma pedido hasta que el usuario ya no quiera más
                     do {
-                        cout<<"* * * * * LA CARTA * * * * *"<<endl;
-                        cout<<"   Id      "<<"Nombre       "<<"Costo    "<<endl;
-                        for (int j = 0; j < p; j++) {
-                            cout<<j<<"  ";
-                            lista_productos[j]->mostrarProducto();
-                        }
-                        cout<<"\n";
+                        int eleccion;
+                        cout<<"¿Va a ordenar una bebida o comida? Comida (1) / Bebida (2): ";
+                        cin>>eleccion;
                         
                         int num_prod;
                         cout<<"Seleccione el producto que desea ordenar: ";
                         cin>>num_prod;
                         cout<<"\n";
                         
-                        //Obtener los datos del producto
                         string nom_prod;
-                        nom_prod = lista_productos[num_prod]->getNomProd();
-                        int cost_prod;
-                        cost_prod = lista_productos[num_prod]->getCostoProd();
+                        int cost_prod = 0;
+                        //Obtener los datos del producto (dependiendo si quiere ordenar comida o bebida)
+                        switch (eleccion) {
+                            case 1:
+                                nom_prod = tienda.obten_nombre_producto_comida(num_prod);
+                                cost_prod = tienda.obten_costo_producto_comida(num_prod);
+                                break;
+                            case 2:
+                                nom_prod = tienda.obten_nombre_producto_bebida(num_prod);
+                                cost_prod = tienda.obten_costo_producto_bebida(num_prod);
+                                break;
+                            default:
+                                break;
+                        }
                         
+                        //Agregar producto a la orden
                         orden[o].assign(nom_prod);
                         
-                        o += 1;
+                        o ++;
                         
                         a_pagar += cost_prod;
                           
@@ -305,6 +320,7 @@ int main(int argc, const char * argv[]) {
                         cout<<"\n";
                         
                     } while (algo_mas == "s");
+                    //Muestra la orden y cuenta del pedido
                     cout<<"· · · · · SU CUENTA · · · · ·"<<endl;
                     for (int j = 1; j < o; j++) {
                         cout<<j<<"  "<<orden[j]<<endl;;
@@ -317,21 +333,17 @@ int main(int argc, const char * argv[]) {
                     o = 1;
                 }
                 
-//              Opción 4 del panel: "Usuario" (ver los demás usuarios)
+                //Opción 4 del panel: "Usuario" (ver los demás usuarios)
                 else if (opcion_usuario == 4) {
-                    cout<<"   Nombre    "<<"Nivel     "<<"Correo     "<< "Teléfono     "<<"Id     "<<"Saldo     "<<endl;
-                    for (int k = 0; k < u; k++) {
-                        cout<<k<<"  ";
-                        lista_usuarios[k]->mostrar();
-                    }
+                    lista_usuarios[u].mostrar_lista_usuarios(lista_usuarios, u);
                 }
                 
-//              Opción 5 del panel: "Usuario" (salir)
+                //Opción 5 del panel: "Usuario" (salir)
                 else if (opcion_usuario == 5) {
                     cout<<"Has decidido salir.\nHasta pronto!"<<endl;
                 }
                 
-//              Opción erronea del panel: "Usuario" (error)
+                //Opción erronea del panel: "Usuario" (error)
                 else {
                     cout<<"ERROR --- Opción no válida!"<<endl;
                 }
@@ -341,3 +353,31 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+
+//Definiciones de funciones
+
+//Función para mostrar el menú de opciones para el panel de administrador
+void menuAdmin(){
+    cout<<"·············MENÚ·············"<<endl;
+    cout<<"¿Qué desea hacer?"<<endl;
+    cout<<"1) Ver usuarios"<<endl;
+    cout<<"2) Agregar usuario"<<endl;
+    cout<<"3) Eliminar usuario"<<endl;
+    cout<<"4) Ver productos disponibles"<<endl;
+    cout<<"5) Agregar producto"<<endl;
+    cout<<"6) Eliminar producto"<<endl;
+    cout<<"7) Salir"<<endl;
+    cout<<"\n";
+}
+
+//Función para mostrar el menú de opciones para el panel de usuario
+void menuUsuario(){
+    cout<<"·············MENÚ·············"<<endl;
+    cout<<"¿Qué desea hacer?"<<endl;
+    cout<<"1) Ver mi perfil"<<endl;
+    cout<<"2) Ver productos disponibles"<<endl;
+    cout<<"3) Hacer un pedido"<<endl;
+    cout<<"4) Ver los demás usuarios"<<endl;
+    cout<<"5) Salir"<<endl;
+    cout<<"\n";
+}
