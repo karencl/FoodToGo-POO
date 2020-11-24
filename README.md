@@ -1,10 +1,9 @@
-# Avance 2 - IMPORTANTE LEER
-En este avance, reestructuré el código basándome en mi diagrama de clases.
-Así mismo, acomodé mis archivos, agregué funciones y comentarios en el código.
+# Avance 3 - IMPORTANTE LEER
+Reestructuré un poco el código (hice algunas correcciones) y agregué los comentarios de manera correcta.
 
 -¿Qué se va a implementar para el próximo avance?
 
-Trataé de agregar funciones nuevas y hacer las correcciones que se me indiquen de este avance.
+Hacer las correcciones que se me indiquen de este avance, para tener mi proyecto ya terminado para la entrega final
 
 *LA CONTRASEÑA DEL ADMIN1 ES: 1234
 
@@ -20,7 +19,7 @@ Este proyecto se llevará a cabo con el fin de resolver parte de una problemáti
 Como sabemos, se requiere que la gente guarde distancia y confinamiento. Sin embargo, una de las cosas que más ha tomado popularidad durante la pandemia, ha sido el pedir cosas o comida en línea. Y cuando esto no es posible, la gente sale a comprar las cosas, poniendo en riesgo su salud y la de los demás.
 
 Esta aplicación tiene como propósito, poner a la disposición de la gente una nueva opción de pedir alimentos en línea, con la finalidad de evitar una salida más y por ende, más contagios.
-Para ello, se utilizarán varias clases para los usuarios y productos, junto sus respectivos atributos y métodos. Lo cual facilitará la construcción y funcionamiento de la misma. Finalmente, se buscará agregar la opción de archivos de tipo .txt, para una mejor experiencia del todo usuario que prueba la aplicación mientras está en desarrollo.
+Para ello, se utilizarán varias clases para los usuarios y productos, junto sus respectivos atributos y métodos. Lo cual facilitará la construcción y funcionamiento de la misma.
 
 # Funcionalidad del programa
 
