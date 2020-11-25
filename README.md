@@ -1,5 +1,5 @@
 # Avance 3 - IMPORTANTE LEER
-Reestructuré un poco el código (hice algunas correcciones) y agregué los comentarios de manera correcta.
+Reestructuré un poco el código (hice algunas correcciones), modifiqué las herencias y agregué los comentarios de manera correcta.
 
 -¿Qué se va a implementar para el próximo avance?
 
