@@ -45,8 +45,8 @@ class Tienda {
         void crea_productos_bebidas();
         void muestra_lista_comida();
         void muestra_lista_bebidas();
-        void agrega_producto_comida(int id, string nomb, int cost, string tipo);
-        void agrega_producto_bebida(int id, string nomb, int cost, string sabor);
+        void agrega_producto_comida(int id, string nomb, int cost, string tipo, string empaque);
+        void agrega_producto_bebida(int id, string nomb, int cost, string sabor, string empaque);
         void elimina_producto_comida(int index);
         void elimina_producto_bebida(int index);
         string obten_nombre_producto_comida(int index);
@@ -56,63 +56,72 @@ class Tienda {
 };
 
 /*
- * Uiliza el arreglo de lista_comida.
- * Lo llena con 5 ejemplos de objetos y el index de el arreglo aumenta
- * en 1 hasta el último agregado.
+ * Función -> llena el arreglo lista_comida con algunos objetos
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
  */
 void Tienda::crea_productos_comida(){
-    lista_comida[0].set_datos_producto(314, "Ensalada", 70.99, "Saludable", lista_comida[0].empacado_en());
+    lista_comida[0].set_datos_producto(314, "Ensalada", 70.99, "Saludable",
+                                       lista_comida[0].get_empaque_comida());
     p ++;
-    lista_comida[1].set_datos_producto(421, "Hamburguesa", 120.5, "Carbohidrato", lista_comida[1].empacado_en());
+    lista_comida[1].set_datos_producto(421, "Hamburguesa", 120.5, "Carbohidrato",
+                                       lista_comida[1].get_empaque_comida());
     p ++;
-    lista_comida[2].set_datos_producto(117, "Arrachera", 180.23, "Proteína", lista_comida[2].empacado_en());
+    lista_comida[2].set_datos_producto(117, "Arrachera", 180.23, "Proteína",
+                                       lista_comida[2].get_empaque_comida());
     p ++;
-    lista_comida[3].set_datos_producto(233, "Pescado", 139.9, "Proteína", lista_comida[3].empacado_en());
+    lista_comida[3].set_datos_producto(233, "Pescado", 139.9, "Proteína",
+                                       lista_comida[3].get_empaque_comida());
     p ++;
-    lista_comida[4].set_datos_producto(101, "Galletas", 42.8, "Azucar", lista_comida[4].empacado_en());
+    lista_comida[4].set_datos_producto(101, "Galletas", 42.8, "Azucar", "Tubo");
     p ++;
 }
 
 /*
-* Uiliza el arreglo de lista_bebidas.
-* Lo llena con 3 ejemplos de objetos y el index de el arreglo aumenta
-* en 1 hasta el último agregado.
-*/
+ * Función -> llena el arreglo lista_bebidas con algunos objetos
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void Tienda::crea_productos_bebidas(){
-    lista_bebidas[0].set_datos_producto(122, "Naranjada", 30.99, "Naranja", lista_bebidas[0].empacado_en());
+    lista_bebidas[0].set_datos_producto(122, "Naranjada", 30.99, "Naranja",
+                                        lista_bebidas[0].get_empaque_bebida());
     b ++;
-    lista_bebidas[1].set_datos_producto(143, "Té - Manz", 44.2, "Manzanilla", lista_bebidas[1].empacado_en());
+    lista_bebidas[1].set_datos_producto(143, "Té - Manz", 44.2, "Manzanilla", "Taza");
     b ++;
-    lista_bebidas[2].set_datos_producto(309, "Malteada-V", 60.5, "Vainilla", lista_bebidas[2].empacado_en());
+    lista_bebidas[2].set_datos_producto(309, "Malteada-V", 60.5, "Vainilla", "Bote");
     b ++;
 }
 
 /*
-* Función para mostrar la lista de la comida.
-*
-* Recibe como parámetros una lista de objetos de la clase Comida (hija de la clase
-* Producto) y el tamaño de la lista que se usará como index para recorrerla
-* y mostrar cada objeto en ella.
-*/
+ * Función -> muestra la lista de la comida
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void Tienda::muestra_lista_comida(){
     cout<<"COMIDA:"<<endl;
     cout<<"   Id      "<<"Nombre          "<<"Costo       "<<"Tipo       "<<"Empaque"<<endl;
     for (int j = 0; j < p; j++) {
         cout<<j<<"  ";
-        cout<<lista_comida[j].get_id_prod()<<"     "<<lista_comida[j].get_nomb_prod()<<"  \
-        $"<<lista_comida[j].get_costo_prod()<<"     "<<lista_comida[j].get_tipo()<<"      \
-        "<<lista_comida[j].empacado_en()<<endl;
+        cout<<lista_comida[j].get_id_prod()<<"     "<<lista_comida[j].get_nomb_prod()<<"\
+        $"<<lista_comida[j].get_costo_prod()<<"     "<<lista_comida[j].get_tipo()<<"\
+        "<<lista_comida[j].get_empaque_comida()<<endl;
     }
     cout<<"\n";
 }
 
 /*
-* Función para mostrar la lista de las bebidas.
-*
-* Recibe como parámetros una lista de objetos de la clase Bebida (hija de la clase
-* Producto) y el tamaño de la lista que se usará como index para recorrerla
-* y mostrar cada objeto en ella.
-*/
+ * Función -> muestra la lista de la comida
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void Tienda::muestra_lista_bebidas(){
     cout<<"BEBIDAS:"<<endl;
     cout<<"   Id      "<<"Nombre           "<<"Costo        "<<"Sabor       "<<"Empaque"<<endl;
@@ -120,24 +129,42 @@ void Tienda::muestra_lista_bebidas(){
         cout<<k<<"  ";
         cout<<lista_bebidas[k].get_id_prod()<<"     "<<lista_bebidas[k].get_nomb_prod()<<" \
         $"<<lista_bebidas[k].get_costo_prod()<<"      "<<lista_bebidas[k].get_sabor()<<"   \
-        "<<lista_bebidas[k].empacado_en()<<endl;
+        "<<lista_bebidas[k].get_empaque_bebida()<<endl;
     }
     cout<<"\n";
 }
 
-//Función para agregar producto a la lista de comida
-void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo){
-    lista_comida[p].set_datos_producto(id, nomb, cost, tipo, lista_comida[p].empacado_en());
+/*
+ * Función -> agrega producto a la lista de comida
+ *
+ * Parámetros: id, nombre, costo, tipo, empaque
+ * No retorna nada
+ *
+ */
+void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo, string empaque){
+    lista_comida[p].set_datos_producto(id, nomb, cost, tipo, empaque);
     p ++;
 }
 
-//Función para agregar producto a la lista de bebidas
-void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor){
-    lista_bebidas[b].set_datos_producto(id, nomb, cost, sabor, lista_bebidas[b].empacado_en());
+/*
+ * Función -> agrega producto a la lista de bebidas
+ *
+ * Parámetros: id, nombre, costo, sabor, empaque
+ * No retorna nada
+ *
+ */
+void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor, string empaque){
+    lista_bebidas[b].set_datos_producto(id, nomb, cost, sabor, empaque);
     b ++;
 }
 
-//Función para eliminar producto de la lista de comida
+/*
+ * Función -> elimina producto a la lista de comida
+ *
+ * Parámetros: index
+ * No retorna nada
+ *
+ */
 void Tienda::elimina_producto_comida(int index){
     for (int k = index; k < p; k++) {
         lista_comida[k] = lista_comida[k + 1];
@@ -145,7 +172,13 @@ void Tienda::elimina_producto_comida(int index){
     p --;
 }
 
-//Función para eliminar producto de la lista de bebidas
+/*
+ * Función -> elimina producto a la lista de bebidas
+ *
+ * Parámetros: index
+ * No retorna nada
+ *
+ */
 void Tienda::elimina_producto_bebida(int index){
     for (int k = index; k < b; k++) {
         lista_bebidas[k] = lista_bebidas[k + 1];
@@ -153,22 +186,46 @@ void Tienda::elimina_producto_bebida(int index){
     b --;
 }
 
-//Función que obtiene el nombre de la comida a través de un getter de la clase Producto
+/*
+ * Función -> obtiene el nombre de una comida a través de un getter de la clase Producto
+ *
+ * Parámetros: index
+ * Retorna: nombre de tipo string
+ *
+ */
 string Tienda::obten_nombre_producto_comida(int index){
     return lista_comida[index].get_nomb_prod();
 }
 
-//Función que obtiene el costo de la comida a través de un getter de la clase Producto
+/*
+ * Función -> obtiene el costo de una comida a través de un getter de la clase Producto
+ *
+ * Parámetros: index
+ * Retorna: costo de tipo float
+ *
+ */
 float Tienda::obten_costo_producto_comida(int index){
     return lista_comida[index].get_costo_prod();
 }
 
-//Función que obtiene el nombre de la bebida a través de un getter de la clase Producto
+/*
+ * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
+ *
+ * Parámetros: index
+ * Retorna: nombre de tipo float
+ *
+ */
 string Tienda::obten_nombre_producto_bebida(int index){
     return lista_bebidas[index].get_nomb_prod();
 }
 
-//Función que obtiene el costo de la bebida a través de un getter de la clase Producto
+/*
+ * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
+ *
+ * Parámetros: index
+ * Retorna: costo de tipo float
+ *
+ */
 float Tienda::obten_costo_producto_bebida(int index){
     return lista_bebidas[index].get_costo_prod();
 }

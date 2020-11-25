@@ -39,34 +39,52 @@ class Producto {
         float get_costo_prod();
         int get_id_prod();
         virtual void set_datos_producto(int, string, float);
-        virtual string empacado_en();
 };
 
-//Función setter de los datos del producto
+/*
+ * Setter -> datos
+ *
+ * Parámetros: id, nombre, costo
+ * No retorna nada
+ *
+ */
 void Producto::set_datos_producto(int _id, string _nombre, float _costo){
     id = _id;
     nombre = _nombre;
     costo = _costo;
 }
 
-//Función getter del nombre del producto
+/*
+ * Getter -> nombre
+ *
+ * No recibe parámetros
+ * Retorna: nombre de tipo string
+ *
+ */
 string Producto::get_nomb_prod(){
     return nombre;
 }
 
-//Función getter del costo del producto
+/*
+ * Getter -> costo
+ *
+ * No recibe parámetros
+ * Retorna: costo de tipo float
+ *
+ */
 float Producto::get_costo_prod(){
     return costo;
 }
 
-//Función getter del id del producto
+/*
+ * Getter -> id
+ *
+ * No recibe parámetros
+ * Retorna: id de tipo int
+ *
+ */
 int Producto::get_id_prod(){
     return id;
-}
-
-//Función para saber como viene empaquetado el producto
-string Producto::empacado_en(){
-    return " ";
 }
 
 
@@ -75,30 +93,51 @@ class Comida : public Producto {
     private:
         //Atributos
         string tipo;
+        string empaque;
     public:
         //Constructor por default
-        Comida(): tipo(""), Producto(){};
+        Comida(): tipo(""), Producto(), empaque("Caja"){};
     
         //Métodos
         void set_datos_producto(int, string, float, string, string);
         string get_tipo();
-        string empacado_en();
+        string get_empaque_comida();
 };
 
-//Función setter de los datos del producto-comida
-void Comida::set_datos_producto(int _id, string _nombre, float _costo, string _tipo, string _empaque){
+/*
+ * Setter -> datos comida
+ *
+ * Parámetros: id, nombre, costo, tipo, empaque
+ * No retorna nada
+ *
+ */
+void Comida::set_datos_producto(int _id, string _nombre, float _costo,
+                                string _tipo, string _empaque){
     Producto::set_datos_producto(_id, _nombre, _costo);
     tipo = _tipo;
+    empaque = _empaque;
 }
 
-//Función getter del tipo de comida
+/*
+ * Getter -> tipo
+ *
+ * No recibe parámetros
+ * Retorna: tipo de tipo string
+ *
+ */
 string Comida::get_tipo(){
     return tipo;
 }
 
-//Función para saber como viene empaquetada la comida
-string Comida::empacado_en(){
-    return "Caja";
+/*
+ * Getter -> empaque
+ *
+ * No recibe parámetros
+ * Retorna: empaque de tipo string
+ *
+ */
+string Comida::get_empaque_comida(){
+    return empaque;
 }
 
 
@@ -107,28 +146,49 @@ class Bebida : public Producto {
     private:
         //Atributos
         string sabor;
+        string empaque;
     public:
         //Constructor
-        Bebida(): sabor(""), Producto(){};
+        Bebida(): sabor(""), Producto(), empaque("Vaso"){};
         void set_datos_producto(int, string, float, string, string);
         string get_sabor();
-        string empacado_en();
+        string get_empaque_bebida();
 };
 
-//Función setter de los datos del producto-bebida
-void Bebida::set_datos_producto(int _id, string _nombre, float _costo, string _sabor, string _empaque){
+/*
+ * Setter -> datos bebida
+ *
+ * Parámetros: id, nombre, costo, sabor, empaque
+ * No retorna nada
+ *
+ */
+void Bebida::set_datos_producto(int _id, string _nombre, float _costo,
+                                string _sabor, string _empaque){
     Producto::set_datos_producto(_id, _nombre, _costo);
     sabor = _sabor;
+    empaque = _empaque;
 }
 
-//Función getter del sabor de la bebida
+/*
+ * Getter -> sabor
+ *
+ * No recibe parámetros
+ * Retorna: sabor de tipo string
+ *
+ */
 string Bebida::get_sabor(){
     return sabor;
 }
 
-//Función para saber como viene empaquetada la bebida
-string Bebida::empacado_en(){
-    return "Bote";
+/*
+ * Getter -> empaque
+ *
+ * No recibe parámetros
+ * Retorna: empaque de tipo string
+ *
+ */
+string Bebida::get_empaque_bebida(){
+    return empaque;
 }
 
 #endif /* Producto_hpp */

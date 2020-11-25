@@ -41,20 +41,39 @@ class Persona{
         void mostrar();
 };
 
-//Función setter de los datos de la persona
-void Persona::set_datos(string _nombre, string _nivel, string _correo, long _telefono){
+/*
+ * Setter -> datos
+ *
+ * Parámetros: nombre, nivel, correo, teléfono
+ * No retorna nada
+ *
+ */
+void Persona::set_datos(string _nombre, string _nivel, string _correo,
+                        long _telefono){
     nombre = _nombre;
     nivel = _nivel;
     correo = _correo;
     telefono = _telefono;
 }
 
-//Función para mostrar a la persona
+/*
+ * Función -> muestra persona
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void Persona::mostrar(){
-    cout<<nombre<<"      "<<nivel<<"    "<<correo<<"          "<<telefono<<"    ";
+    cout<<nombre<<"      "<<nivel<<"      "<<correo<<"         "<<telefono<<"    ";
 }
 
-//Función getter del nivel de la persona (Regular/ Plus/ VIP)
+/*
+ * Getter -> nivel
+ *
+ * No recibe parámetros
+ * Retorna: nivel de tipo string
+ *
+ */
 string Persona::get_nivel(){
     return nivel;
 }
@@ -74,13 +93,26 @@ class Administrador : public Persona{
         int get_contrasena();
 };
 
-//Función setter de los datos del administrador
-void Administrador::set_datos(string _nombre, string _nivel, string _correo, long _telefono, int _contrasena){
+/*
+ * Setter -> datos administrador
+ *
+ * Parámetros: nombre, nivel, correo, teléfono, contraseña
+ * No retorna nada
+ *
+ */
+void Administrador::set_datos(string _nombre, string _nivel, string _correo,
+                              long _telefono, int _contrasena){
     Persona::set_datos(_nombre, _nivel, _correo, _telefono);
     contrasena = _contrasena;
 }
 
-//Función getter de la contraseña del administrador
+/*
+ * Getter -> contraseña
+ *
+ * No recibe parámetros
+ * Retorna: contraseña de tipo int
+ *
+ */
 int Administrador::get_contrasena(){
     return contrasena;
 }
@@ -91,51 +123,104 @@ class Usuario : public Persona{
     private:
         //Atributos
         int id;
-        int saldo;
+        float saldo;
     public:
         //Constructor por default
-        Usuario(): id(0), saldo(0), Persona(){};
+        Usuario(): id(0), saldo(0.0), Persona(){};
     
         //Métodos
-        void set_datos(string, string, string, long, int, int);
+        void set_datos(string, string, string, long, int, float);
+        float set_saldo(Usuario &usuario, float nuevo_saldo);
         int get_id();
-        int get_saldo();
-        string get_nivel(Usuario lista_usuarios[], int index);
+        float get_saldo();
+        string get_nivel(Usuario usuario);
+        float compra(Usuario &usuario, float pagar);
         void mostrar_lista_usuarios(Usuario lista_usuarios[], int index);
-        void mostrar_perfil_usuario(string nomb, string corr, long tel, int saldo, Usuario lista_usuarios[], int index);
+        void mostrar_perfil_usuario(string nomb, string corr,
+                                    long tel, Usuario usuario);
 };
 
-//Función setter de los datos del usuario
-void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _telefono, int _id, int _saldo){
+/*
+ * Setter -> datos usuario
+ *
+ * Parámetros: nombre, nivel, correo, teléfono, id, saldo
+ * No retorna nada
+ *
+ */
+void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _telefono,
+                        int _id, float _saldo){
     Persona::set_datos(_nombre, _nivel, _correo, _telefono);
     id = _id;
     saldo = _saldo;
 }
 
-//Función getter del id del usuario
+/*
+ * Setter -> saldo actualizado
+ *
+ * Parámetros: un objeto de la clase Usuario, nuevo_saldo
+ * Retorna: saldo de tipo float
+ *
+ */
+float Usuario::set_saldo(Usuario &usuario, float nuevo_saldo){
+    saldo = usuario.get_saldo() + nuevo_saldo;
+    return saldo;
+}
+
+/*
+ * Getter -> id
+ *
+ * No recibe parámetros
+ * Retorna: id de tipo int
+ *
+ */
 int Usuario::get_id(){
     return id;
 }
 
-//Función getter del saldo del usuario
-int Usuario::get_saldo(){
+/*
+ * Getter -> saldo
+ *
+ * No tiene parámetros
+ * Retorna: saldo de tipo float
+ *
+ */
+float Usuario::get_saldo(){
     return saldo;
 }
 
-//Función getter del nivel del usuario (que se obtiene en la clase Persona)
-string Usuario::get_nivel(Usuario lista_usuarios[], int index){
-    return lista_usuarios[index].Persona::get_nivel();
+/*
+ * Getter -> nivel (se obtiene en la clase Persona)
+ *
+ * Parámetros: un objeto de la clase Usuario
+ * Retorna: nivel de tipo string
+ *
+ */
+string Usuario::get_nivel(Usuario usuario){
+    return usuario.Persona::get_nivel();
 }
 
 /*
- * Función para mostrar la lista de los usuarios.
+ * Función -> hace compra y actualiza saldo
  *
- * Recibe como parámetros una lista de objetos de la clase Usuario
- * y el tamaño de la lista que se usará como index para recorrerla
- * y mostrar cada objeto en ella.
+ * Parámetros: un objeto de la clase Usuario, la cantidad a pagar
+ * Retorna: saldo actual de tipo float
+ *
+ */
+float Usuario::compra(Usuario &usuario, float pagar){
+    saldo = usuario.get_saldo() - pagar;
+    return saldo;
+}
+
+/*
+ * Función -> mostrar la lista de los usuarios.
+ *
+ * Parámetros: lista de objetos de la clase Usuario, el tamaño de la lista
+ * No retorna nada
+ *
  */
 void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
-    cout<<"   Nombre       "<<"Nivel      "<<"Correo          "<< "Teléfono          "<<"Id     "<<"Saldo"<<endl;
+    cout<<"   Nombre       "<<"Nivel        "<<"Correo            "<< "Teléfono       \
+    "<<"Id      "<<"Saldo"<<endl;
     for (int k=0; k < index; k++) {
         cout<<k<<"  ";
         lista_usuarios[k].Persona::mostrar();
@@ -144,14 +229,22 @@ void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
     cout<<"\n";
 }
 
-void Usuario::mostrar_perfil_usuario(string nomb, string corr, long tel, int saldo, Usuario *lista_usuarios, int index){
+/*
+ * Función -> imprime perfil del usuario.
+ *
+ * Parámetros: nombre, correo, telefono, saldo, un objeto de la clase Usuario
+ * No retorna nada
+ *
+ */
+void Usuario::mostrar_perfil_usuario(string nomb, string corr, long tel,
+                                     Usuario usuario){
     cout<<"- - - - - - - - - - - - - - PERFIL - - - - - - - - - - - - - -"<<endl;
-    cout<<"Id de cliente: "<<lista_usuarios[index].get_id()<<endl;
+    cout<<"Id de cliente: "<<usuario.get_id()<<endl;
     cout<<"Nombre: "<<nomb<<endl;
-    cout<<"Nivel: "<<lista_usuarios[index].get_nivel(lista_usuarios, index)<<endl;
+    cout<<"Nivel: "<<usuario.get_nivel(usuario)<<endl;
     cout<<"Correo: "<<corr<<endl;
     cout<<"Teléfono: "<<tel<<endl;
-    cout<<"Saldo: "<<saldo<<endl;
+    cout<<"Saldo: "<<usuario.get_saldo()<<endl;
     cout<<"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
 }
 

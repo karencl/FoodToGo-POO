@@ -44,11 +44,12 @@ int main() {
     tienda.crea_productos_bebidas();
     
     //Creando un arreglo de objetos de la clase Usuario
-    int u = 2;
-    int id = 3;
+    int u = 3;
+    int id = 4;
     Usuario lista_usuarios[100];
-    lista_usuarios[0].set_datos("Daniela", "Regular", "dany@gmail.com", 1231231231, 1, 130);
-    lista_usuarios[1].set_datos("Pepe", "Regular", "pepe@gmail.com", 4564564564, 2, 85);
+    lista_usuarios[0].set_datos("Daniela", "VIP", "dany@gmail.com", 1231231231, 1, 130.99);
+    lista_usuarios[1].set_datos("Pepe", "Regular", "pepe@gmail.com", 4564564564, 2, 85.5);
+    lista_usuarios[2].set_datos("Jimena", "Plus", "jim@gmail.com", 8888888888, 3, 346.2);
  
     //Bienvenida al programa
     cout<<"Bienvenid@ a ~Food to go!~"<<endl;
@@ -96,7 +97,7 @@ int main() {
                     //Opción 2 del panel: "Administrador" (agregar usuario)
                     else if (opcion_admin == 2) {
                         string nombre, nivel, correo;
-                        int saldo;
+                        float saldo;
                         long telefono;
                         cout<<"Nombre: ";
                         cin>>nombre;
@@ -139,7 +140,7 @@ int main() {
                     
                     //Opción 5 del panel: "Administrador" (agregar producto)
                     else if (opcion_admin == 5) {
-                        string nombre;
+                        string nombre, empaque;
                         int id, costo;
                         cout<<"Id: ";
                         cin>>id;
@@ -147,6 +148,8 @@ int main() {
                         cin>>nombre;
                         cout<<"Costo (sin $): ";
                         cin>>costo;
+                        cout<<"Empaque: ";
+                        cin>>empaque;
                         cout<<"\n";
                         
                         int eleccion;
@@ -159,13 +162,13 @@ int main() {
                                 cout<<"Tipo: ";
                                 cin>>tipo;
                                 cout<<"\n";
-                                tienda.agrega_producto_comida(id, nombre, costo, tipo);
+                                tienda.agrega_producto_comida(id, nombre, costo, tipo, empaque);
                                 break;
                             case 2:
                                 cout<<"Sabor: ";
                                 cin>>sabor;
                                 cout<<"\n";
-                                tienda.agrega_producto_bebida(id, nombre, costo, sabor);
+                                tienda.agrega_producto_bebida(id, nombre, costo, sabor, empaque);
                                 break;
                             default:
                                 break;
@@ -224,7 +227,7 @@ int main() {
             
             //Pedir los datos del usuario
             string nombre, correo;
-            int saldo;
+            float saldo;
             long telefono;
             cout<<"Nombre: ";
             cin>>nombre;
@@ -241,7 +244,7 @@ int main() {
             
             cout<<"Este es tu nuevo perfil! Esperamos que disfrutes de la aplicación!"<<endl<<endl;
             
-            lista_usuarios[u].mostrar_perfil_usuario(nombre, correo, telefono, saldo, lista_usuarios, u);
+            lista_usuarios[u].mostrar_perfil_usuario(nombre, correo, telefono, lista_usuarios[u]);
              
             cout<<"Pasando al menú principal..."<<endl<<endl;
             
@@ -251,7 +254,7 @@ int main() {
             int opcion_usuario = 0;
             
             //Ciclo para que siga corriendo, mientras no elija la opción "salir"
-            while (opcion_usuario != 5) {
+            while (opcion_usuario != 6) {
                 
                 //Impresión del menú para el usuario
                 menuUsuario();
@@ -261,7 +264,8 @@ int main() {
                 
                 //Opción 1 del panel: "Usuario" (ver mi perfil)
                 if (opcion_usuario == 1) {
-                    lista_usuarios[u].mostrar_perfil_usuario(nombre, correo, telefono, saldo, lista_usuarios, u-1);
+                    lista_usuarios[u].mostrar_perfil_usuario(nombre, correo,
+                                                             telefono, lista_usuarios[u-1]);
                 }
                 
                 //Opción 2 del panel: "Usuario" (ver los productos disponibles)
@@ -305,6 +309,7 @@ int main() {
                                 cost_prod = tienda.obten_costo_producto_bebida(num_prod);
                                 break;
                             default:
+                                cout<<"Error! Opción no encontrada."<<endl;
                                 break;
                         }
                         
@@ -330,16 +335,41 @@ int main() {
                     cout<<"Cantidad total a pagar: $"<<a_pagar<<endl;
                     cout<<"\n";
                     
+                    float saldo_actual = lista_usuarios[u-1].get_saldo();
+                    if (saldo_actual > a_pagar) {
+                        cout<<"Realizando cobro por cantidad: $"<<a_pagar<<endl;
+                        cout<<"Listo! "<<"Saldo restante: $"<<lista_usuarios[u-1].compra(lista_usuarios[u-1],
+                                                                                         a_pagar)<<endl;
+                        cout<<"\n";
+                    }else{
+                        cout<<"Lo sentimos!"<<endl;
+                        cout<<"No cuentas con suficiente saldo en tu cuenta para hacer el pedido."<<endl<<endl;
+                        cout<<"Tu saldo: $"<<lista_usuarios[u-1].get_saldo()<<endl;
+                        cout<<"Puedes actualizarlo en las opciones del menú!"<<endl;
+                        cout<<"\n";
+                    }
+                    
                     o = 1;
                 }
                 
-                //Opción 4 del panel: "Usuario" (ver los demás usuarios)
+                //Opción 4 del panel: "Usuario" (actualizar saldo)
                 else if (opcion_usuario == 4) {
+                    cout<<"¿Cuánto deseas agregar a tu saldo? ";
+                    int nuevo_saldo;
+                    cin>>nuevo_saldo;
+                    cout<<"Tu nuevo saldo es: $"<<lista_usuarios[u-1].set_saldo(lista_usuarios[u-1],
+                                                                                nuevo_saldo)<<endl<<endl;
+                    cout<<"Sigue disfrutando de la aplicación!"<<endl;
+                    cout<<"\n";
+                }
+                
+                //Opción 5 del panel: "Usuario" (ver los demás usuarios)
+                else if (opcion_usuario == 5) {
                     lista_usuarios[u].mostrar_lista_usuarios(lista_usuarios, u);
                 }
                 
-                //Opción 5 del panel: "Usuario" (salir)
-                else if (opcion_usuario == 5) {
+                //Opción 6 del panel: "Usuario" (salir)
+                else if (opcion_usuario == 6) {
                     cout<<"Has decidido salir.\nHasta pronto!"<<endl;
                 }
                 
@@ -356,7 +386,13 @@ int main() {
 
 //Definiciones de funciones
 
-//Función para mostrar el menú de opciones para el panel de administrador
+/*
+ * Función -> muestra el menú del panel de administrador
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void menuAdmin(){
     cout<<"·············MENÚ·············"<<endl;
     cout<<"¿Qué desea hacer?"<<endl;
@@ -370,14 +406,21 @@ void menuAdmin(){
     cout<<"\n";
 }
 
-//Función para mostrar el menú de opciones para el panel de usuario
+/*
+ * Función -> muestra el menú del panel de usuario
+ *
+ * No recibe parámetros
+ * No retorna nada
+ *
+ */
 void menuUsuario(){
     cout<<"·············MENÚ·············"<<endl;
     cout<<"¿Qué desea hacer?"<<endl;
     cout<<"1) Ver mi perfil"<<endl;
     cout<<"2) Ver productos disponibles"<<endl;
     cout<<"3) Hacer un pedido"<<endl;
-    cout<<"4) Ver los demás usuarios"<<endl;
-    cout<<"5) Salir"<<endl;
+    cout<<"4) Actualizar saldo"<<endl;
+    cout<<"5) Ver los demás usuarios"<<endl;
+    cout<<"6) Salir"<<endl;
     cout<<"\n";
 }
