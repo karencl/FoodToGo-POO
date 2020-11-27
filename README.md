@@ -1,5 +1,5 @@
 # Avance 3 - IMPORTANTE LEER
-Reestructuré un poco el código (hice algunas correcciones), modifiqué las herencias y agregué los comentarios de manera correcta.
+Reestructuré un poco el código (hice algunas correcciones), modifiqué las herencias, la composición y agregué los comentarios de manera correcta.
 
 -¿Qué se va a implementar para el próximo avance?
 
@@ -30,6 +30,18 @@ Para ello, se utilizarán varias clases para los usuarios y productos, junto sus
 - Indicar saldo en la cuenta para facilitar compras
 
 - Realizar compras (en modo usuario)
+
+
+# Correcciones
+
+Para este programa, se hicieron las siguientes correcciones:
+
+1. Se revisaron los getters y setters. Se corrigieron los parámetros que se les pasaban.
+
+2. Se eliminaron los archivos de cada clase y se crearon solo tres (Tienda.hpp, Producto.hpp y Persona.hpp)
+
+3. Se agregaorn mis datos al programa y al diagrama UML
+
 
 # Ejemplo de un alogritmo del programa
 
