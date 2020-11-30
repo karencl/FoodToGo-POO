@@ -1,11 +1,21 @@
-# Avance 3 - IMPORTANTE LEER
-Reestructuré un poco el código (hice algunas correcciones), modifiqué las herencias, la composición y agregué los comentarios de manera correcta.
-
--¿Qué se va a implementar para el próximo avance?
-
-Hacer las correcciones que se me indiquen de este avance, para tener mi proyecto ya terminado para la entrega final
+# Avance 3 - IMPORTANTE LEER - abajo de esto están las correcciones :)
+Reestructuré un poco el código, hice algunas correcciones y agregué los comentarios de manera correcta.
 
 *LA CONTRASEÑA DEL ADMIN1 ES: 1234
+
+# Correcciones
+
+Para este programa, se hicieron las siguientes correcciones:
+
+1. Se modificó el código para seguir con las normas y estándares de c++, ya que en mi documento de excel, se me marcó esto como una competencia faltante 
+
+2. Se revisaron los getters y setters. Se corrigieron los parámetros que se les pasaban.
+
+3. Se eliminaron los archivos de cada clase y se crearon solo tres (Tienda.hpp, Producto.hpp y Persona.hpp), con el fin de tener más orden y facilidad de revisar el código
+
+4. Se agregaorn mis datos al programa y al diagrama UML
+
+5. Se agregaron comentarios de forma correcta 
 
 # Proyecto para la materia: pensamiento computacional orientado a objetos
 Este trabajo es parte del proyecto para la materia "Pensamiento computacional orientado a objetos".
@@ -30,17 +40,6 @@ Para ello, se utilizarán varias clases para los usuarios y productos, junto sus
 - Indicar saldo en la cuenta para facilitar compras
 
 - Realizar compras (en modo usuario)
-
-
-# Correcciones
-
-Para este programa, se hicieron las siguientes correcciones:
-
-1. Se revisaron los getters y setters. Se corrigieron los parámetros que se les pasaban.
-
-2. Se eliminaron los archivos de cada clase y se crearon solo tres (Tienda.hpp, Producto.hpp y Persona.hpp)
-
-3. Se agregaorn mis datos al programa y al diagrama UML
 
 
 # Ejemplo de un alogritmo del programa
