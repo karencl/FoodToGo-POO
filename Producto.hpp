@@ -38,8 +38,9 @@ class Producto {
         string get_nomb_prod();
         float get_costo_prod();
         int get_id_prod();
-        virtual void set_datos_producto(int, string, float);
+        virtual void set_datos_producto(int id, string nomb, float cost);
 };
+
 
 /*
  * Setter -> datos
@@ -54,6 +55,7 @@ void Producto::set_datos_producto(int _id, string _nombre, float _costo){
     costo = _costo;
 }
 
+
 /*
  * Getter -> nombre
  *
@@ -65,6 +67,7 @@ string Producto::get_nomb_prod(){
     return nombre;
 }
 
+
 /*
  * Getter -> costo
  *
@@ -75,6 +78,7 @@ string Producto::get_nomb_prod(){
 float Producto::get_costo_prod(){
     return costo;
 }
+
 
 /*
  * Getter -> id
@@ -88,6 +92,7 @@ int Producto::get_id_prod(){
 }
 
 
+
 //Declaración de la clase Comida que hereda de la clase Producto
 class Comida : public Producto {
     private:
@@ -99,10 +104,12 @@ class Comida : public Producto {
         Comida(): tipo(""), Producto(), empaque("Caja"){};
     
         //Métodos
-        void set_datos_producto(int, string, float, string, string);
+        void set_datos_producto(int id, string nomb, float cost,
+                                string tip, string emp);
         string get_tipo();
         string get_empaque_comida();
 };
+
 
 /*
  * Setter -> datos comida
@@ -118,6 +125,7 @@ void Comida::set_datos_producto(int _id, string _nombre, float _costo,
     empaque = _empaque;
 }
 
+
 /*
  * Getter -> tipo
  *
@@ -128,6 +136,7 @@ void Comida::set_datos_producto(int _id, string _nombre, float _costo,
 string Comida::get_tipo(){
     return tipo;
 }
+
 
 /*
  * Getter -> empaque
@@ -141,6 +150,7 @@ string Comida::get_empaque_comida(){
 }
 
 
+
 //Declaración de la clase Bebida que hereda de la clase Producto
 class Bebida : public Producto {
     private:
@@ -150,10 +160,12 @@ class Bebida : public Producto {
     public:
         //Constructor
         Bebida(): sabor(""), Producto(), empaque("Vaso"){};
-        void set_datos_producto(int, string, float, string, string);
+        void set_datos_producto(int id, string nomb, float cost,
+                                string sab, string emp);
         string get_sabor();
         string get_empaque_bebida();
 };
+
 
 /*
  * Setter -> datos bebida
@@ -169,6 +181,7 @@ void Bebida::set_datos_producto(int _id, string _nombre, float _costo,
     empaque = _empaque;
 }
 
+
 /*
  * Getter -> sabor
  *
@@ -179,6 +192,7 @@ void Bebida::set_datos_producto(int _id, string _nombre, float _costo,
 string Bebida::get_sabor(){
     return sabor;
 }
+
 
 /*
  * Getter -> empaque

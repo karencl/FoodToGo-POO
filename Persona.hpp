@@ -36,10 +36,11 @@ class Persona{
         Persona(): nombre(""), nivel(""), correo(""), telefono(0){};
         
         //Métodos
-        virtual void set_datos(string, string, string, long);
+        virtual void set_datos(string nomb, string niv, string corr, long tel);
         virtual string get_nivel();
         void mostrar();
 };
+
 
 /*
  * Setter -> datos
@@ -56,6 +57,7 @@ void Persona::set_datos(string _nombre, string _nivel, string _correo,
     telefono = _telefono;
 }
 
+
 /*
  * Función -> muestra persona
  *
@@ -66,6 +68,7 @@ void Persona::set_datos(string _nombre, string _nivel, string _correo,
 void Persona::mostrar(){
     cout<<nombre<<"      "<<nivel<<"      "<<correo<<"         "<<telefono<<"    ";
 }
+
 
 /*
  * Getter -> nivel
@@ -79,6 +82,7 @@ string Persona::get_nivel(){
 }
 
 
+
 //Declaración de la clase Administrador que hereda de la clase Persona
 class Administrador : public Persona{
     private:
@@ -89,9 +93,10 @@ class Administrador : public Persona{
         Administrador(): contrasena(0), Persona(){};
     
         //Métodos
-        void set_datos(string, string, string, long, int);
+        void set_datos(string nomb, string niv, string corr, long tel, int cont);
         int get_contrasena();
 };
+
 
 /*
  * Setter -> datos administrador
@@ -106,6 +111,7 @@ void Administrador::set_datos(string _nombre, string _nivel, string _correo,
     contrasena = _contrasena;
 }
 
+
 /*
  * Getter -> contraseña
  *
@@ -116,6 +122,7 @@ void Administrador::set_datos(string _nombre, string _nivel, string _correo,
 int Administrador::get_contrasena(){
     return contrasena;
 }
+
 
 
 //Declaración de la clase Usuario que hereda de Persona
@@ -129,7 +136,8 @@ class Usuario : public Persona{
         Usuario(): id(0), saldo(0.0), Persona(){};
     
         //Métodos
-        void set_datos(string, string, string, long, int, float);
+        void set_datos(string nomb, string niv, string corr, long tel, int id,
+                       float sal);
         float set_saldo(Usuario &usuario, float nuevo_saldo);
         int get_id();
         float get_saldo();
@@ -139,6 +147,7 @@ class Usuario : public Persona{
         void mostrar_perfil_usuario(string nomb, string corr,
                                     long tel, Usuario usuario);
 };
+
 
 /*
  * Setter -> datos usuario
@@ -154,6 +163,7 @@ void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _tel
     saldo = _saldo;
 }
 
+
 /*
  * Setter -> saldo actualizado
  *
@@ -166,6 +176,7 @@ float Usuario::set_saldo(Usuario &usuario, float nuevo_saldo){
     return saldo;
 }
 
+
 /*
  * Getter -> id
  *
@@ -176,6 +187,7 @@ float Usuario::set_saldo(Usuario &usuario, float nuevo_saldo){
 int Usuario::get_id(){
     return id;
 }
+
 
 /*
  * Getter -> saldo
@@ -188,6 +200,7 @@ float Usuario::get_saldo(){
     return saldo;
 }
 
+
 /*
  * Getter -> nivel (se obtiene en la clase Persona)
  *
@@ -198,6 +211,7 @@ float Usuario::get_saldo(){
 string Usuario::get_nivel(Usuario usuario){
     return usuario.Persona::get_nivel();
 }
+
 
 /*
  * Función -> hace compra y actualiza saldo
@@ -210,6 +224,7 @@ float Usuario::compra(Usuario &usuario, float pagar){
     saldo = usuario.get_saldo() - pagar;
     return saldo;
 }
+
 
 /*
  * Función -> mostrar la lista de los usuarios.
@@ -228,6 +243,7 @@ void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
     }
     cout<<"\n";
 }
+
 
 /*
  * Función -> imprime perfil del usuario.

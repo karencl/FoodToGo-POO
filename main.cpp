@@ -163,14 +163,17 @@ int main() {
                                 cin>>tipo;
                                 cout<<"\n";
                                 tienda.agrega_producto_comida(id, nombre, costo, tipo, empaque);
+                                cout<<"Listo! Producto agregado exitosamente."<<endl;
                                 break;
                             case 2:
                                 cout<<"Sabor: ";
                                 cin>>sabor;
                                 cout<<"\n";
                                 tienda.agrega_producto_bebida(id, nombre, costo, sabor, empaque);
+                                cout<<"Listo! Producto agregado exitosamente."<<endl;
                                 break;
                             default:
+                                cout<<"Error!"<<endl;
                                 break;
                         }
                     }
@@ -191,13 +194,15 @@ int main() {
                         switch (eleccion) {
                             case 1:
                                 tienda.elimina_producto_comida(producto_a_eliminar);
+                                cout<<"Listo! Producto eliminado exitosamente."<<endl;
                                 break;
                             case 2:
                                 tienda.elimina_producto_bebida(producto_a_eliminar);
+                                cout<<"Listo! Producto eliminado exitosamente."<<endl;
                             default:
+                                cout<<"Error!"<<endl;
                                 break;
                         }
-                        cout<<"Listo! Producto eliminado exitosamente."<<endl;
                     }
                     
                     //Opción 7 del panel: "Administrador" (salir)
@@ -386,6 +391,7 @@ int main() {
 
 //Definiciones de funciones
 
+
 /*
  * Función -> muestra el menú del panel de administrador
  *
@@ -405,6 +411,7 @@ void menuAdmin(){
     cout<<"7) Salir"<<endl;
     cout<<"\n";
 }
+
 
 /*
  * Función -> muestra el menú del panel de usuario

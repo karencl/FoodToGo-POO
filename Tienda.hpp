@@ -45,8 +45,10 @@ class Tienda {
         void crea_productos_bebidas();
         void muestra_lista_comida();
         void muestra_lista_bebidas();
-        void agrega_producto_comida(int id, string nomb, int cost, string tipo, string empaque);
-        void agrega_producto_bebida(int id, string nomb, int cost, string sabor, string empaque);
+        void agrega_producto_comida(int id, string nomb, int cost, string tipo,
+                                    string empaque);
+        void agrega_producto_bebida(int id, string nomb, int cost, string sabor,
+                                    string empaque);
         void elimina_producto_comida(int index);
         void elimina_producto_bebida(int index);
         string obten_nombre_producto_comida(int index);
@@ -54,6 +56,7 @@ class Tienda {
         string obten_nombre_producto_bebida(int index);
         float obten_costo_producto_bebida(int index);
 };
+
 
 /*
  * Función -> llena el arreglo lista_comida con algunos objetos
@@ -79,6 +82,7 @@ void Tienda::crea_productos_comida(){
     p ++;
 }
 
+
 /*
  * Función -> llena el arreglo lista_bebidas con algunos objetos
  *
@@ -96,6 +100,7 @@ void Tienda::crea_productos_bebidas(){
     b ++;
 }
 
+
 /*
  * Función -> muestra la lista de la comida
  *
@@ -105,15 +110,16 @@ void Tienda::crea_productos_bebidas(){
  */
 void Tienda::muestra_lista_comida(){
     cout<<"COMIDA:"<<endl;
-    cout<<"   Id      "<<"Nombre          "<<"Costo       "<<"Tipo       "<<"Empaque"<<endl;
+    cout<<"   Id      "<<"Nombre        "<<"Costo      "<<"Tipo      "<<"Empaque"<<endl;
     for (int j = 0; j < p; j++) {
         cout<<j<<"  ";
-        cout<<lista_comida[j].get_id_prod()<<"     "<<lista_comida[j].get_nomb_prod()<<"\
-        $"<<lista_comida[j].get_costo_prod()<<"     "<<lista_comida[j].get_tipo()<<"\
+        cout<<lista_comida[j].get_id_prod()<<"    "<<lista_comida[j].get_nomb_prod()<<"\
+        $"<<lista_comida[j].get_costo_prod()<<"    "<<lista_comida[j].get_tipo()<<"\
         "<<lista_comida[j].get_empaque_comida()<<endl;
     }
     cout<<"\n";
 }
+
 
 /*
  * Función -> muestra la lista de la comida
@@ -124,15 +130,16 @@ void Tienda::muestra_lista_comida(){
  */
 void Tienda::muestra_lista_bebidas(){
     cout<<"BEBIDAS:"<<endl;
-    cout<<"   Id      "<<"Nombre           "<<"Costo        "<<"Sabor       "<<"Empaque"<<endl;
+    cout<<"   Id      "<<"Nombre         "<<"Costo       "<<"Sabor      "<<"Empaque"<<endl;
     for (int k = 0; k < b; k++) {
         cout<<k<<"  ";
-        cout<<lista_bebidas[k].get_id_prod()<<"     "<<lista_bebidas[k].get_nomb_prod()<<" \
-        $"<<lista_bebidas[k].get_costo_prod()<<"      "<<lista_bebidas[k].get_sabor()<<"   \
+        cout<<lista_bebidas[k].get_id_prod()<<"    "<<lista_bebidas[k].get_nomb_prod()<<" \
+        $"<<lista_bebidas[k].get_costo_prod()<<"     "<<lista_bebidas[k].get_sabor()<<"   \
         "<<lista_bebidas[k].get_empaque_bebida()<<endl;
     }
     cout<<"\n";
 }
+
 
 /*
  * Función -> agrega producto a la lista de comida
@@ -141,10 +148,12 @@ void Tienda::muestra_lista_bebidas(){
  * No retorna nada
  *
  */
-void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo, string empaque){
+void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
+                                    string empaque){
     lista_comida[p].set_datos_producto(id, nomb, cost, tipo, empaque);
     p ++;
 }
+
 
 /*
  * Función -> agrega producto a la lista de bebidas
@@ -153,10 +162,12 @@ void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo, 
  * No retorna nada
  *
  */
-void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor, string empaque){
+void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
+                                    string empaque){
     lista_bebidas[b].set_datos_producto(id, nomb, cost, sabor, empaque);
     b ++;
 }
+
 
 /*
  * Función -> elimina producto a la lista de comida
@@ -172,6 +183,7 @@ void Tienda::elimina_producto_comida(int index){
     p --;
 }
 
+
 /*
  * Función -> elimina producto a la lista de bebidas
  *
@@ -186,6 +198,7 @@ void Tienda::elimina_producto_bebida(int index){
     b --;
 }
 
+
 /*
  * Función -> obtiene el nombre de una comida a través de un getter de la clase Producto
  *
@@ -196,6 +209,7 @@ void Tienda::elimina_producto_bebida(int index){
 string Tienda::obten_nombre_producto_comida(int index){
     return lista_comida[index].get_nomb_prod();
 }
+
 
 /*
  * Función -> obtiene el costo de una comida a través de un getter de la clase Producto
@@ -208,6 +222,7 @@ float Tienda::obten_costo_producto_comida(int index){
     return lista_comida[index].get_costo_prod();
 }
 
+
 /*
  * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
  *
@@ -218,6 +233,7 @@ float Tienda::obten_costo_producto_comida(int index){
 string Tienda::obten_nombre_producto_bebida(int index){
     return lista_bebidas[index].get_nomb_prod();
 }
+
 
 /*
  * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
