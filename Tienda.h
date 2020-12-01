@@ -34,8 +34,8 @@ class Tienda {
         //Atributos
         Comida lista_comida[MAX];
         Bebida lista_bebidas[MAX];
-        int p = 0;
-        int b = 0;
+        int cont_comida = 0;
+        int cont_bebida = 0;
     public:
         //Constructor de la clase Tienda
         Tienda(){};
@@ -68,18 +68,18 @@ class Tienda {
 void Tienda::crea_productos_comida(){
     lista_comida[0].set_datos_producto(314, "Ensalada", 70.99, "Saludable",
                                        lista_comida[0].get_empaque_comida());
-    p ++;
+    cont_comida ++;
     lista_comida[1].set_datos_producto(421, "Hamburguesa", 120.5, "Carbohidrato",
                                        lista_comida[1].get_empaque_comida());
-    p ++;
+    cont_comida ++;
     lista_comida[2].set_datos_producto(117, "Arrachera", 180.23, "Proteína",
                                        lista_comida[2].get_empaque_comida());
-    p ++;
+    cont_comida ++;
     lista_comida[3].set_datos_producto(233, "Pescado", 139.9, "Proteína",
                                        lista_comida[3].get_empaque_comida());
-    p ++;
+    cont_comida ++;
     lista_comida[4].set_datos_producto(101, "Galletas", 42.8, "Azucar", "Tubo");
-    p ++;
+    cont_comida ++;
 }
 
 
@@ -93,11 +93,11 @@ void Tienda::crea_productos_comida(){
 void Tienda::crea_productos_bebidas(){
     lista_bebidas[0].set_datos_producto(122, "Naranjada", 30.99, "Naranja",
                                         lista_bebidas[0].get_empaque_bebida());
-    b ++;
+    cont_bebida ++;
     lista_bebidas[1].set_datos_producto(143, "Té - Manz", 44.2, "Manzanilla", "Taza");
-    b ++;
+    cont_bebida ++;
     lista_bebidas[2].set_datos_producto(309, "Malteada-V", 60.5, "Vainilla", "Bote");
-    b ++;
+    cont_bebida ++;
 }
 
 
@@ -111,7 +111,7 @@ void Tienda::crea_productos_bebidas(){
 void Tienda::muestra_lista_comida(){
     cout<<"COMIDA:"<<endl;
     cout<<"   Id      "<<"Nombre        "<<"Costo      "<<"Tipo      "<<"Empaque"<<endl;
-    for (int j = 0; j < p; j++) {
+    for (int j = 0; j < cont_comida; j++) {
         cout<<j<<"  ";
         cout<<lista_comida[j].get_id_prod()<<"    "<<lista_comida[j].get_nomb_prod()<<"\
         $"<<lista_comida[j].get_costo_prod()<<"    "<<lista_comida[j].get_tipo()<<"\
@@ -131,7 +131,7 @@ void Tienda::muestra_lista_comida(){
 void Tienda::muestra_lista_bebidas(){
     cout<<"BEBIDAS:"<<endl;
     cout<<"   Id      "<<"Nombre         "<<"Costo       "<<"Sabor      "<<"Empaque"<<endl;
-    for (int k = 0; k < b; k++) {
+    for (int k = 0; k < cont_bebida; k++) {
         cout<<k<<"  ";
         cout<<lista_bebidas[k].get_id_prod()<<"    "<<lista_bebidas[k].get_nomb_prod()<<" \
         $"<<lista_bebidas[k].get_costo_prod()<<"     "<<lista_bebidas[k].get_sabor()<<"   \
@@ -150,8 +150,8 @@ void Tienda::muestra_lista_bebidas(){
  */
 void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
                                     string empaque){
-    lista_comida[p].set_datos_producto(id, nomb, cost, tipo, empaque);
-    p ++;
+    lista_comida[cont_comida].set_datos_producto(id, nomb, cost, tipo, empaque);
+    cont_comida ++;
 }
 
 
@@ -164,8 +164,8 @@ void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
  */
 void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
                                     string empaque){
-    lista_bebidas[b].set_datos_producto(id, nomb, cost, sabor, empaque);
-    b ++;
+    lista_bebidas[cont_bebida].set_datos_producto(id, nomb, cost, sabor, empaque);
+    cont_bebida ++;
 }
 
 
@@ -177,10 +177,15 @@ void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
  *
  */
 void Tienda::elimina_producto_comida(int index){
-    for (int k = index; k < p; k++) {
-        lista_comida[k] = lista_comida[k + 1];
+    if (index < cont_comida) {
+        for (int k = index; k < cont_comida; k++) {
+            lista_comida[k] = lista_comida[k + 1];
+        }
+        cont_comida --;
+        cout<<"Listo! Comida eliminada exitosamente."<<endl;
+    }else{
+        cout<<"Comida no encontrada!"<<endl;
     }
-    p --;
 }
 
 
@@ -192,10 +197,15 @@ void Tienda::elimina_producto_comida(int index){
  *
  */
 void Tienda::elimina_producto_bebida(int index){
-    for (int k = index; k < b; k++) {
-        lista_bebidas[k] = lista_bebidas[k + 1];
+    if (index < cont_bebida) {
+        for (int k = index; k < cont_bebida; k++) {
+            lista_bebidas[k] = lista_bebidas[k + 1];
+        }
+        cont_bebida --;
+        cout<<"Listo! Bebida eliminada exitosamente."<<endl;
+    }else{
+        cout<<"Bebida no encontrada!"<<endl;
     }
-    b --;
 }
 
 

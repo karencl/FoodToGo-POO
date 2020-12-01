@@ -198,13 +198,10 @@ int main() {
                         switch (eleccion) {
                             case 1:
                                 tienda.elimina_producto_comida(producto_a_eliminar);
-                                cout<<"Listo! Producto eliminado exitosamente."<<endl;
                                 break;
                             case 2:
                                 tienda.elimina_producto_bebida(producto_a_eliminar);
-                                cout<<"Listo! Producto eliminado exitosamente."<<endl;
                             default:
-                                cout<<"Error! Opción inválida."<<endl;
                                 break;
                         }
                     }
