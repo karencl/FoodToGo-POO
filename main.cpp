@@ -22,9 +22,9 @@
 #include <iostream> //Para imprimir
 
 //Clases del proyecto
-#include "Producto.hpp"
-#include "Persona.hpp"
-#include "Tienda.hpp"
+#include "Producto.h"
+#include "Persona.h"
+#include "Tienda.h"
 
 using namespace std;
 
@@ -124,11 +124,15 @@ int main() {
                         cout<<"¿Cuál usuario quieres eliminar?: ";
                         int usuario_a_eliminar;
                         cin>>usuario_a_eliminar;
-                        for (int j = usuario_a_eliminar; j <= u; j++) {
-                            lista_usuarios[j] = lista_usuarios[j + 1];
+                        if (usuario_a_eliminar < u) {
+                            for (int j = usuario_a_eliminar; j <= u; j++) {
+                                lista_usuarios[j] = lista_usuarios[j + 1];
+                            }
+                            u --;
+                            cout<<"Listo! Usuario eliminado exitosamente."<<endl;
+                        }else{
+                            cout<<"Usuario no encontrado!"<<endl;
                         }
-                        u --;
-                        cout<<"Listo! Usuario eliminado exitosamente."<<endl;
                     }
                     
                     //Opción 4 del panel: "Administrador" (ver los productos disponibles)
