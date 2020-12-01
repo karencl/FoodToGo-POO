@@ -168,7 +168,7 @@ void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _tel
 /*
  * Setter del saldo actualizado
  *
- * @param &usuario (objeto de la clase Usuario con referencia)
+ * @param &usuario (un objeto de la clase Usuario con referencia)
  * @param nuevo_saldo
  * @return saldo de tipo float
  *
@@ -206,7 +206,7 @@ float Usuario::get_saldo(){
 /*
  * Getter del nivel de un objeto Usuario (con get_nievl de la clase Persona)
  *
- * @param un objeto de la clase Usuario
+ * @param usuario (un objeto de la clase Usuario)
  * @return nivel de tipo string
  *
  */
@@ -253,7 +253,7 @@ void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
  * Función "mostrar_perfil_usuario()" -> imprime perfil de un objeto Usuario.
  *
  * @param nomb, corr, tel
- * @param usuario (objeto de la clase Usuario)
+ * @param usuario (un objeto de la clase Usuario)
  * @return No retorna nada
  *
  */
