@@ -32,7 +32,7 @@ class Persona{
         string correo;
         long telefono;
     public:
-        //Constructor por default
+        //Constructor por default de la clase Persona
         Persona(): nombre(""), nivel(""), correo(""), telefono(0){};
         
         //Métodos
@@ -43,10 +43,10 @@ class Persona{
 
 
 /*
- * Setter -> datos
+ * Setter de los datos de un objeto de la clase Persona
  *
- * Parámetros: nombre, nivel, correo, teléfono
- * No retorna nada
+ * @param _nombre, _nivel, _correo, _telefono
+ * @return No retorna nada
  *
  */
 void Persona::set_datos(string _nombre, string _nivel, string _correo,
@@ -59,10 +59,10 @@ void Persona::set_datos(string _nombre, string _nivel, string _correo,
 
 
 /*
- * Función -> muestra persona
+ * Función "mostrar()" -> muestra un objeto de Persona
  *
- * No recibe parámetros
- * No retorna nada
+ * @param No recibe parámetros
+ * @return No retorna nada
  *
  */
 void Persona::mostrar(){
@@ -71,10 +71,10 @@ void Persona::mostrar(){
 
 
 /*
- * Getter -> nivel
+ * Getter del nivel de un objeto de la clase Persona
  *
- * No recibe parámetros
- * Retorna: nivel de tipo string
+ * @param No recibe parámetros
+ * @return nivel de tipo string
  *
  */
 string Persona::get_nivel(){
@@ -89,7 +89,7 @@ class Administrador : public Persona{
         //Atributos
         int contrasena;
     public:
-        //Constructor por default
+        //Constructor por default de una subclase de Persona -> Administrador
         Administrador(): contrasena(0), Persona(){};
     
         //Métodos
@@ -99,10 +99,10 @@ class Administrador : public Persona{
 
 
 /*
- * Setter -> datos administrador
+ * Setter de los datos de un objeto de la clase Administrador
  *
- * Parámetros: nombre, nivel, correo, teléfono, contraseña
- * No retorna nada
+ * @param _nombre, _nivel, _correo, _telefono, _contrasena
+ * @return No retorna nada
  *
  */
 void Administrador::set_datos(string _nombre, string _nivel, string _correo,
@@ -113,10 +113,11 @@ void Administrador::set_datos(string _nombre, string _nivel, string _correo,
 
 
 /*
- * Getter -> contraseña
+ * Getter de la contraseña.
+ * Obtiene la contraseña de un objeto de la clase Administrador
  *
- * No recibe parámetros
- * Retorna: contraseña de tipo int
+ * @param No recibe parámetros
+ * @return contrasena de tipo int
  *
  */
 int Administrador::get_contrasena(){
@@ -132,7 +133,7 @@ class Usuario : public Persona{
         int id;
         float saldo;
     public:
-        //Constructor por default
+        //Constructor por default de una subclase de Persona -> Usuario
         Usuario(): id(0), saldo(0.0), Persona(){};
     
         //Métodos
@@ -150,10 +151,10 @@ class Usuario : public Persona{
 
 
 /*
- * Setter -> datos usuario
+ * Setter de los datos de un objeto de la clase Usuario
  *
- * Parámetros: nombre, nivel, correo, teléfono, id, saldo
- * No retorna nada
+ * @param _nombre, _nivel, _correo, _telefono, _id, _saldo
+ * @return No retorna nada
  *
  */
 void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _telefono,
@@ -165,10 +166,11 @@ void Usuario::set_datos(string _nombre, string _nivel, string _correo, long _tel
 
 
 /*
- * Setter -> saldo actualizado
+ * Setter del saldo actualizado
  *
- * Parámetros: un objeto de la clase Usuario, nuevo_saldo
- * Retorna: saldo de tipo float
+ * @param &usuario (objeto de la clase Usuario con referencia)
+ * @param nuevo_saldo
+ * @return saldo de tipo float
  *
  */
 float Usuario::set_saldo(Usuario &usuario, float nuevo_saldo){
@@ -178,10 +180,10 @@ float Usuario::set_saldo(Usuario &usuario, float nuevo_saldo){
 
 
 /*
- * Getter -> id
+ * Getter del id de un objeto de la clase Usuario
  *
- * No recibe parámetros
- * Retorna: id de tipo int
+ * @param No recibe parámetros
+ * @return id de tipo int
  *
  */
 int Usuario::get_id(){
@@ -190,10 +192,10 @@ int Usuario::get_id(){
 
 
 /*
- * Getter -> saldo
+ * Getter del saldo de un objeto de la clase Usuario
  *
- * No tiene parámetros
- * Retorna: saldo de tipo float
+ * @param No tiene parámetros
+ * @return saldo de tipo float
  *
  */
 float Usuario::get_saldo(){
@@ -202,10 +204,10 @@ float Usuario::get_saldo(){
 
 
 /*
- * Getter -> nivel (se obtiene en la clase Persona)
+ * Getter del nivel de un objeto Usuario (con get_nievl de la clase Persona)
  *
- * Parámetros: un objeto de la clase Usuario
- * Retorna: nivel de tipo string
+ * @param un objeto de la clase Usuario
+ * @return nivel de tipo string
  *
  */
 string Usuario::get_nivel(Usuario usuario){
@@ -214,10 +216,11 @@ string Usuario::get_nivel(Usuario usuario){
 
 
 /*
- * Función -> hace compra y actualiza saldo
+ * Función "compra()" -> hace compra y actualiza saldo de un objeto Usuario
  *
- * Parámetros: un objeto de la clase Usuario, la cantidad a pagar
- * Retorna: saldo actual de tipo float
+ * @param &usuario (un objeto de la clase Usuario con referencia)
+ * @param pagar
+ * @return saldo de tipo float
  *
  */
 float Usuario::compra(Usuario &usuario, float pagar){
@@ -227,10 +230,11 @@ float Usuario::compra(Usuario &usuario, float pagar){
 
 
 /*
- * Función -> mostrar la lista de los usuarios.
+ * Función "mostrar_lista_usuarios()" -> mostrar lista de objetos de Usuario.
  *
- * Parámetros: lista de objetos de la clase Usuario, el tamaño de la lista
- * No retorna nada
+ * @param lista_usuarios[] (lista de objetos de la clase Usuario)
+ * @param index (tamaño de la lista)
+ * @return No retorna nada
  *
  */
 void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
@@ -246,10 +250,11 @@ void Usuario::mostrar_lista_usuarios(Usuario lista_usuarios[], int index){
 
 
 /*
- * Función -> imprime perfil del usuario.
+ * Función "mostrar_perfil_usuario()" -> imprime perfil de un objeto Usuario.
  *
- * Parámetros: nombre, correo, telefono, saldo, un objeto de la clase Usuario
- * No retorna nada
+ * @param nomb, corr, tel
+ * @param usuario (objeto de la clase Usuario)
+ * @return No retorna nada
  *
  */
 void Usuario::mostrar_perfil_usuario(string nomb, string corr, long tel,

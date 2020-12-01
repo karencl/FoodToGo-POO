@@ -31,7 +31,7 @@ class Producto {
         string nombre;
         float costo;
     public:
-        //Constructor por default
+        //Constructor por default de la clase Producto
         Producto(): id(0), nombre(""), costo(0.0){};
     
         //Métodos
@@ -43,10 +43,10 @@ class Producto {
 
 
 /*
- * Setter -> datos
+ * Setter de los datos de un objeto de la clase Producto
  *
- * Parámetros: id, nombre, costo
- * No retorna nada
+ * @param _id, _nombre, _costo
+ * @return No retorna nada
  *
  */
 void Producto::set_datos_producto(int _id, string _nombre, float _costo){
@@ -57,10 +57,10 @@ void Producto::set_datos_producto(int _id, string _nombre, float _costo){
 
 
 /*
- * Getter -> nombre
+ * Getter del nombre de un objeto de la clase Producto
  *
- * No recibe parámetros
- * Retorna: nombre de tipo string
+ * @param No recibe parámetros
+ * @return nombre de tipo string
  *
  */
 string Producto::get_nomb_prod(){
@@ -69,10 +69,10 @@ string Producto::get_nomb_prod(){
 
 
 /*
- * Getter -> costo
+ * Getter del costo de un objeto de la clase Producto
  *
- * No recibe parámetros
- * Retorna: costo de tipo float
+ * @param No recibe parámetros
+ * @return costo de tipo float
  *
  */
 float Producto::get_costo_prod(){
@@ -81,10 +81,10 @@ float Producto::get_costo_prod(){
 
 
 /*
- * Getter -> id
+ * Getter del id de un objeto de la clase Producto
  *
- * No recibe parámetros
- * Retorna: id de tipo int
+ * @param No recibe parámetros
+ * @return id de tipo int
  *
  */
 int Producto::get_id_prod(){
@@ -100,7 +100,7 @@ class Comida : public Producto {
         string tipo;
         string empaque;
     public:
-        //Constructor por default
+        //Constructor por default de una subclase de Producto -> Comida
         Comida(): tipo(""), Producto(), empaque("Caja"){};
     
         //Métodos
@@ -112,10 +112,10 @@ class Comida : public Producto {
 
 
 /*
- * Setter -> datos comida
+ * Setter de los datos de un objeto de la clase Comida
  *
- * Parámetros: id, nombre, costo, tipo, empaque
- * No retorna nada
+ * @param _id, _nombre, _costo, _tipo, _empaque
+ * @return No retorna nada
  *
  */
 void Comida::set_datos_producto(int _id, string _nombre, float _costo,
@@ -127,10 +127,10 @@ void Comida::set_datos_producto(int _id, string _nombre, float _costo,
 
 
 /*
- * Getter -> tipo
+ * Getter del tipo de un objeto de la clase Comida
  *
- * No recibe parámetros
- * Retorna: tipo de tipo string
+ * @param No recibe parámetros
+ * @return tipo de tipo string
  *
  */
 string Comida::get_tipo(){
@@ -139,10 +139,10 @@ string Comida::get_tipo(){
 
 
 /*
- * Getter -> empaque
+ * Getter del empaque de un objeto de la clase Comida
  *
- * No recibe parámetros
- * Retorna: empaque de tipo string
+ * @param No recibe parámetros
+ * @return empaque de tipo string
  *
  */
 string Comida::get_empaque_comida(){
@@ -158,7 +158,7 @@ class Bebida : public Producto {
         string sabor;
         string empaque;
     public:
-        //Constructor
+        //Constructor por default de una subclase de Producto -> Bebida
         Bebida(): sabor(""), Producto(), empaque("Vaso"){};
         void set_datos_producto(int id, string nomb, float cost,
                                 string sab, string emp);
@@ -168,10 +168,10 @@ class Bebida : public Producto {
 
 
 /*
- * Setter -> datos bebida
+ * Setter de los datos de un objeto de la clase Bebida
  *
- * Parámetros: id, nombre, costo, sabor, empaque
- * No retorna nada
+ * @param _id, _nombre, _costo, _sabor, _empaque
+ * @return No retorna nada
  *
  */
 void Bebida::set_datos_producto(int _id, string _nombre, float _costo,
@@ -183,10 +183,10 @@ void Bebida::set_datos_producto(int _id, string _nombre, float _costo,
 
 
 /*
- * Getter -> sabor
+ * Getter del sabor de un objeto de la clase Bebida
  *
- * No recibe parámetros
- * Retorna: sabor de tipo string
+ * @param No recibe parámetros
+ * @return sabor de tipo string
  *
  */
 string Bebida::get_sabor(){
@@ -195,10 +195,10 @@ string Bebida::get_sabor(){
 
 
 /*
- * Getter -> empaque
+ * Getter del empaque de un objeto de la clase Bebida
  *
- * No recibe parámetros
- * Retorna: empaque de tipo string
+ * @param No recibe parámetros
+ * @return empaque de tipo string
  *
  */
 string Bebida::get_empaque_bebida(){

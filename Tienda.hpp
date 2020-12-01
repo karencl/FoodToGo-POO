@@ -37,7 +37,7 @@ class Tienda {
         int p = 0;
         int b = 0;
     public:
-        //Constructor
+        //Constructor de la clase Tienda
         Tienda(){};
     
         //Métodos de la clase
@@ -59,10 +59,10 @@ class Tienda {
 
 
 /*
- * Función -> llena el arreglo lista_comida con algunos objetos
+ * Función "crea_productos_comida()" -> llena el arreglo lista_comida con 5 objetos
  *
- * No recibe parámetros
- * No retorna nada
+ * @param No recibe parámetros
+ * @return No retorna nada
  *
  */
 void Tienda::crea_productos_comida(){
@@ -84,10 +84,10 @@ void Tienda::crea_productos_comida(){
 
 
 /*
- * Función -> llena el arreglo lista_bebidas con algunos objetos
+ * Función "crea_productos_bebidas()" -> llena el arreglo lista_bebidas con 3 objetos
  *
- * No recibe parámetros
- * No retorna nada
+ * @param No recibe parámetros
+ * @return No retorna nada
  *
  */
 void Tienda::crea_productos_bebidas(){
@@ -102,10 +102,10 @@ void Tienda::crea_productos_bebidas(){
 
 
 /*
- * Función -> muestra la lista de la comida
+ * Función "muestra_lista_comida()" -> muestra lista de objetos de la clase Comida
  *
- * No recibe parámetros
- * No retorna nada
+ * @param No recibe parámetros
+ * @return No retorna nada
  *
  */
 void Tienda::muestra_lista_comida(){
@@ -122,10 +122,10 @@ void Tienda::muestra_lista_comida(){
 
 
 /*
- * Función -> muestra la lista de la comida
+ * Función "muestra_lista_bebidas()" -> muestra lista de objetos de la clase Bebida
  *
- * No recibe parámetros
- * No retorna nada
+ * @param No recibe parámetros
+ * @return No retorna nada
  *
  */
 void Tienda::muestra_lista_bebidas(){
@@ -142,10 +142,10 @@ void Tienda::muestra_lista_bebidas(){
 
 
 /*
- * Función -> agrega producto a la lista de comida
+ * Función "agrega_producto_comida()" -> agrega objeto a la lista de objetos de Comida
  *
- * Parámetros: id, nombre, costo, tipo, empaque
- * No retorna nada
+ * @param id, nomb, cost, tipo, empaque
+ * @return No retorna nada
  *
  */
 void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
@@ -156,10 +156,10 @@ void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
 
 
 /*
- * Función -> agrega producto a la lista de bebidas
+ * Función "agrega_producto_bebida()" -> agrega objeto a la lista de objetos de Bebida
  *
- * Parámetros: id, nombre, costo, sabor, empaque
- * No retorna nada
+ * @param id, nomb, cost, sabor, empaque
+ * @return No retorna nada
  *
  */
 void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
@@ -170,10 +170,10 @@ void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
 
 
 /*
- * Función -> elimina producto a la lista de comida
+ * Función "elimina_producto_comida()" -> elimina objeto de lista de objetos de Comida
  *
- * Parámetros: index
- * No retorna nada
+ * @param index (posición del objeto a eliminar)
+ * @return No retorna nada
  *
  */
 void Tienda::elimina_producto_comida(int index){
@@ -185,10 +185,10 @@ void Tienda::elimina_producto_comida(int index){
 
 
 /*
- * Función -> elimina producto a la lista de bebidas
+ * Función "elimina_producto_bebida()" -> elimina objeto de lista de objetos de Bebida
  *
- * Parámetros: index
- * No retorna nada
+ * @param index (posición del objeto a eliminar)
+ * @return No retorna nada
  *
  */
 void Tienda::elimina_producto_bebida(int index){
@@ -200,10 +200,10 @@ void Tienda::elimina_producto_bebida(int index){
 
 
 /*
- * Función -> obtiene el nombre de una comida a través de un getter de la clase Producto
+ * Función "obten_nombre_producto_comida()" -> obtiene el nombre de un objeto Comida
  *
- * Parámetros: index
- * Retorna: nombre de tipo string
+ * @param index (posición del objeto a eliminar)
+ * @return nombre de tipo string
  *
  */
 string Tienda::obten_nombre_producto_comida(int index){
@@ -212,10 +212,10 @@ string Tienda::obten_nombre_producto_comida(int index){
 
 
 /*
- * Función -> obtiene el costo de una comida a través de un getter de la clase Producto
+ * Función "obten_costo_producto_comida()" -> obtiene el costo de un objeto Comida
  *
- * Parámetros: index
- * Retorna: costo de tipo float
+ * @param index (posición del objeto a eliminar)
+ * @return costo de tipo float
  *
  */
 float Tienda::obten_costo_producto_comida(int index){
@@ -224,10 +224,10 @@ float Tienda::obten_costo_producto_comida(int index){
 
 
 /*
- * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
+ * Función "obten_nombre_producto_bebida()" -> obtiene el nombre de un objeto Bebida
  *
- * Parámetros: index
- * Retorna: nombre de tipo float
+ * @param index (posición del objeto a eliminar)
+ * @return nombre de tipo string
  *
  */
 string Tienda::obten_nombre_producto_bebida(int index){
@@ -236,10 +236,10 @@ string Tienda::obten_nombre_producto_bebida(int index){
 
 
 /*
- * Función -> obtiene el costo de una bebida a través de un getter de la clase Producto
+ * Función "obten_costo_producto_bebida()" -> obtiene el costo de un objeto Bebida
  *
- * Parámetros: index
- * Retorna: costo de tipo float
+ * @param index (posición del objeto a eliminar)
+ * @return costo de tipo float
  *
  */
 float Tienda::obten_costo_producto_bebida(int index){

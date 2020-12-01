@@ -173,7 +173,7 @@ int main() {
                                 cout<<"Listo! Producto agregado exitosamente."<<endl;
                                 break;
                             default:
-                                cout<<"Error!"<<endl;
+                                cout<<"Error! Opción inválida."<<endl;
                                 break;
                         }
                     }
@@ -200,7 +200,7 @@ int main() {
                                 tienda.elimina_producto_bebida(producto_a_eliminar);
                                 cout<<"Listo! Producto eliminado exitosamente."<<endl;
                             default:
-                                cout<<"Error!"<<endl;
+                                cout<<"Error! Opción inválida."<<endl;
                                 break;
                         }
                     }
