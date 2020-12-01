@@ -11,7 +11,7 @@ Para este programa, se hicieron las siguientes correcciones:
 
 2. Se revisaron los getters y setters. Se corrigieron los parámetros que se les pasaban.
 
-3. Se eliminaron los archivos de cada clase y se crearon solo tres (Tienda.hpp, Producto.hpp y Persona.hpp), con el fin de tener más orden y facilidad de revisar el código
+3. Se eliminaron los archivos de cada clase y se crearon solo tres (Tienda.h, Producto.h y Persona.h), con el fin de tener más orden y facilidad de revisar el código
 
 4. Se agregaorn mis datos al programa y al diagrama UML
 
