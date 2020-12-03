@@ -7,7 +7,7 @@ Reestructuré un poco el código, hice algunas correcciones y agregué los comen
 
 Para este programa, se hicieron las siguientes correcciones:
 
-1. Se modificó el código para seguir con las normas y estándares de c++, ya que en mi documento de excel, se me marcó esto como una competencia faltante 
+1. Se modificó el código para seguir con las normas y estándares de c++ (comentarios, nombramiento de funciones, ordenamiento de archivos, etc), ya que en mi documento de excel, se me marcó esto como una competencia faltante 
 
 2. Se revisaron los getters y setters. Se corrigieron los parámetros que se les pasaban.
 
