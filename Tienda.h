@@ -217,7 +217,11 @@ void Tienda::elimina_producto_bebida(int index){
  *
  */
 string Tienda::obten_nombre_producto_comida(int index){
-    return lista_comida[index].get_nomb_prod();
+    if (0 <= index && index < cont_comida) {
+        return lista_comida[index].get_nomb_prod();
+    }else{
+        return "";
+    }
 }
 
 
@@ -229,7 +233,11 @@ string Tienda::obten_nombre_producto_comida(int index){
  *
  */
 float Tienda::obten_costo_producto_comida(int index){
-    return lista_comida[index].get_costo_prod();
+    if (0 <= index && index < cont_comida) {
+        return lista_comida[index].get_costo_prod();
+    }else{
+        return 0.0;
+    }
 }
 
 
@@ -241,7 +249,11 @@ float Tienda::obten_costo_producto_comida(int index){
  *
  */
 string Tienda::obten_nombre_producto_bebida(int index){
-    return lista_bebidas[index].get_nomb_prod();
+    if (0 <= index && index < cont_bebida) {
+        return lista_bebidas[index].get_nomb_prod();
+    }else{
+        return "";
+    }
 }
 
 
@@ -253,7 +265,11 @@ string Tienda::obten_nombre_producto_bebida(int index){
  *
  */
 float Tienda::obten_costo_producto_bebida(int index){
-    return lista_bebidas[index].get_costo_prod();
+    if (0 <= index && index < cont_bebida) {
+        return lista_bebidas[index].get_costo_prod();
+    }else{
+        return 0.0;
+    }
 }
 
 #endif /* Tienda_hpp */
