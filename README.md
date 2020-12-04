@@ -1,5 +1,4 @@
-# Avance 3 - IMPORTANTE LEER - abajo de esto están las correcciones :)
-Reestructuré un poco el código, hice algunas correcciones y agregué los comentarios de manera correcta.
+# IMPORTANTE LEER - abajo de esto están las correcciones :)
 
 *LA CONTRASEÑA DEL ADMIN1 ES: 1234
 
