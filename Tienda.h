@@ -45,9 +45,9 @@ class Tienda {
         void crea_productos_bebidas();
         void muestra_lista_comida();
         void muestra_lista_bebidas();
-        void agrega_producto_comida(int id, string nomb, int cost, string tipo,
+        void agrega_producto_comida(int _id, string nomb, float cost, string tipo,
                                     string empaque);
-        void agrega_producto_bebida(int id, string nomb, int cost, string sabor,
+        void agrega_producto_bebida(int _id, string nomb, float cost, string sabor,
                                     string empaque);
         void elimina_producto_comida(int index);
         void elimina_producto_bebida(int index);
@@ -148,9 +148,9 @@ void Tienda::muestra_lista_bebidas(){
  * @return No retorna nada
  *
  */
-void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
+void Tienda::agrega_producto_comida(int _id, string nomb, float cost, string tipo,
                                     string empaque){
-    lista_comida[cont_comida].set_datos_producto(id, nomb, cost, tipo, empaque);
+    lista_comida[cont_comida].set_datos_producto(_id, nomb, cost, tipo, empaque);
     cont_comida ++;
 }
 
@@ -162,9 +162,9 @@ void Tienda::agrega_producto_comida(int id, string nomb, int cost, string tipo,
  * @return No retorna nada
  *
  */
-void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
+void Tienda::agrega_producto_bebida(int _id, string nomb, float cost, string sabor,
                                     string empaque){
-    lista_bebidas[cont_bebida].set_datos_producto(id, nomb, cost, sabor, empaque);
+    lista_bebidas[cont_bebida].set_datos_producto(_id, nomb, cost, sabor, empaque);
     cont_bebida ++;
 }
 
@@ -177,7 +177,7 @@ void Tienda::agrega_producto_bebida(int id, string nomb, int cost, string sabor,
  *
  */
 void Tienda::elimina_producto_comida(int index){
-    if (index < cont_comida) {
+    if (0 <= index && index < cont_comida) {
         for (int k = index; k < cont_comida; k++) {
             lista_comida[k] = lista_comida[k + 1];
         }
@@ -197,7 +197,7 @@ void Tienda::elimina_producto_comida(int index){
  *
  */
 void Tienda::elimina_producto_bebida(int index){
-    if (index < cont_bebida) {
+    if (0 <= index && index < cont_bebida) {
         for (int k = index; k < cont_bebida; k++) {
             lista_bebidas[k] = lista_bebidas[k + 1];
         }

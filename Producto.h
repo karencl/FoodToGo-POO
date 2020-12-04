@@ -38,7 +38,7 @@ class Producto {
         string get_nomb_prod();
         float get_costo_prod();
         int get_id_prod();
-        virtual void set_datos_producto(int id, string nomb, float cost);
+        virtual void set_datos_producto(int _id, string nomb, float cost);
 };
 
 
@@ -104,7 +104,7 @@ class Comida : public Producto {
         Comida(): tipo(""), Producto(), empaque("Caja"){};
     
         //Métodos
-        void set_datos_producto(int id, string nomb, float cost,
+        void set_datos_producto(int _id, string nomb, float cost,
                                 string tip, string emp);
         string get_tipo();
         string get_empaque_comida();
@@ -160,7 +160,7 @@ class Bebida : public Producto {
     public:
         //Constructor por default de una subclase de Producto -> Bebida
         Bebida(): sabor(""), Producto(), empaque("Vaso"){};
-        void set_datos_producto(int id, string nomb, float cost,
+        void set_datos_producto(int _id, string nomb, float cost,
                                 string sab, string emp);
         string get_sabor();
         string get_empaque_bebida();

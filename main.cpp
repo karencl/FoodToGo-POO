@@ -69,7 +69,7 @@ int main() {
         //Caso 1 -> entra como administrador
         case 1:
             int codigo_acceso;
-            cout<<"Ingrese código: ";
+            cout<<"Ingrese código de acceso (numérico): ";
             
             //Lee el código de acceso del admin
             cin>>codigo_acceso;
@@ -124,7 +124,7 @@ int main() {
                         cout<<"¿Cuál usuario quieres eliminar?: ";
                         int usuario_a_eliminar;
                         cin>>usuario_a_eliminar;
-                        if (usuario_a_eliminar < u) {
+                        if (0 <= usuario_a_eliminar && usuario_a_eliminar < u) {
                             for (int j = usuario_a_eliminar; j <= u; j++) {
                                 lista_usuarios[j] = lista_usuarios[j + 1];
                             }
@@ -145,7 +145,8 @@ int main() {
                     //Opción 5 del panel: "Administrador" (agregar producto)
                     else if (opcion_admin == 5) {
                         string nombre, empaque;
-                        int id, costo;
+                        int id;
+                        float costo;
                         cout<<"Id: ";
                         cin>>id;
                         cout<<"Nombre: ";
@@ -201,7 +202,9 @@ int main() {
                                 break;
                             case 2:
                                 tienda.elimina_producto_bebida(producto_a_eliminar);
+                                break;
                             default:
+                                cout<<"Error! Opción inválida."<<endl;
                                 break;
                         }
                     }
@@ -283,7 +286,7 @@ int main() {
                 
                 //Opción 3 del panel: "Usuario" (hacer pedido)
                 else if (opcion_usuario == 3) {
-                    int a_pagar = 0;
+                    float a_pagar = 0.0;
                     string algo_mas;
                     
                     //Muestra la carta
@@ -303,7 +306,7 @@ int main() {
                         cout<<"\n";
                         
                         string nom_prod;
-                        int cost_prod = 0;
+                        float cost_prod = 0.0;
                         //Obtener los datos del producto (dependiendo si quiere ordenar comida o bebida)
                         switch (eleccion) {
                             case 1:
@@ -319,10 +322,13 @@ int main() {
                                 break;
                         }
                         
-                        //Agregar producto a la orden
-                        orden[o].assign(nom_prod);
-                        
-                        o ++;
+                        if (nom_prod == ""){
+                            cout<<"Producto no encontrado!"<<endl;
+                        }else{
+                            //Agregar producto a la orden
+                            orden[o].assign(nom_prod);
+                            o ++;
+                        }
                         
                         a_pagar += cost_prod;
                           
@@ -361,7 +367,7 @@ int main() {
                 //Opción 4 del panel: "Usuario" (actualizar saldo)
                 else if (opcion_usuario == 4) {
                     cout<<"¿Cuánto deseas agregar a tu saldo? ";
-                    int nuevo_saldo;
+                    float nuevo_saldo;
                     cin>>nuevo_saldo;
                     cout<<"Tu nuevo saldo es: $"<<lista_usuarios[u-1].set_saldo(lista_usuarios[u-1],
                                                                                 nuevo_saldo)<<endl<<endl;

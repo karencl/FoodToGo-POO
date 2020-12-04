@@ -137,7 +137,7 @@ class Usuario : public Persona{
         Usuario(): id(0), saldo(0.0), Persona(){};
     
         //Métodos
-        void set_datos(string nomb, string niv, string corr, long tel, int id,
+        void set_datos(string nomb, string niv, string corr, long tel, int _id,
                        float sal);
         float set_saldo(Usuario &usuario, float nuevo_saldo);
         int get_id();
@@ -265,7 +265,7 @@ void Usuario::mostrar_perfil_usuario(string nomb, string corr, long tel,
     cout<<"Nivel: "<<usuario.get_nivel(usuario)<<endl;
     cout<<"Correo: "<<corr<<endl;
     cout<<"Teléfono: "<<tel<<endl;
-    cout<<"Saldo: "<<usuario.get_saldo()<<endl;
+    cout<<"Saldo: $"<<usuario.get_saldo()<<endl;
     cout<<"- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -"<<endl<<endl;
 }
 
